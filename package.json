@@ -26,6 +26,10 @@
     "dependencies": {
         "@remixicon/react": "^4.6.0",
         "bootstrap": "^5.3.7",
-        "react-bootstrap": "^2.10.10"
+        "react-bootstrap": "^2.10.10",
+        "react-ui-scrollspy": "^2.3.0",
+        "sass": "^1.90.0",
+        "sass-embedded": "^1.90.0",
+        "tailwind-merge": "^3.3.1"
     }
 }
