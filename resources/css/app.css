@@ -1,5 +1,6 @@
-@import "bootstrap/dist/css/bootstrap.min.css";
+@import "../scss/bs-scheme.scss";
 @import "loader.css";
+@import "typography.css";
 
 @tailwind base;
 @tailwind components;
