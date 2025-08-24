@@ -7,10 +7,7 @@
 
     <title inertia>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Fonts -->
     <link rel="stylesheet" href="{{ asset('assets/extra-libs/materialize-stripped/dist/css/materialize.min.css') }}">
-
-    <!-- Scripts -->
     <script defer src="{{ asset('assets/extra-libs/materialize-stripped/dist/js/materialize.min.js') }}"></script>
 
     @routes
