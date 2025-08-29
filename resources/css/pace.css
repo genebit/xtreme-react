@@ -1,0 +1,16 @@
+.pace {
+  -webkit-pointer-events: none;
+  pointer-events: none;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.pace-inactive {
+  display: none;
+}
+
+.pace .pace-progress {
+  @apply tw-fixed tw-top-0 tw-w-full tw-h-1 tw-text-teal-700 tw-bg-gradient-to-r tw-from-teal-300 tw-to-teal-500 tw-right-full;
+}

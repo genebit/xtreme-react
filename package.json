@@ -27,6 +27,7 @@
         "@remixicon/react": "^4.6.0",
         "animate.css": "^4.1.1",
         "bootstrap": "^5.3.7",
+        "pace-js": "^1.2.4",
         "react-bootstrap": "^2.10.10",
         "react-ui-scrollspy": "^2.3.0",
         "sass": "^1.90.0",
