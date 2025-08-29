@@ -2,6 +2,7 @@
 @import "loader.css";
 @import "typography.css";
 @import "animate.css";
+@import "scrollbar.css";
 
 @tailwind base;
 @tailwind components;
