@@ -1,7 +1,16 @@
 @import "../scss/bs-scheme.scss";
 @import "loader.css";
 @import "typography.css";
+@import "animate.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.dropdown-toggle::after {
+  @apply !tw-hidden;
+}
+
+.animate__zoomIn.animate__animated {
+  --animate-duration: 200ms;
+}
