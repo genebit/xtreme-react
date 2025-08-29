@@ -3,9 +3,14 @@ import Breadcrumbs from "./components/Breadcrumbs";
 import Footer from "./components/Footer";
 import Sidebar from "./components/Sidebar";
 import { HeaderNavbar } from "./components/HeaderNavbar";
+import { SidebarProvider, useSidebar } from "./contexts/SidebarContext";
 
 function PageWrapper({ children }: { children: ReactNode }) {
-  return <div className="page-wrapper tw-flex">{children}</div>;
+  return (
+    <SidebarProvider>
+      <div className="page-wrapper tw-flex">{children}</div>
+    </SidebarProvider>
+  );
 }
 
 function PageMain({ children }: { children: ReactNode }) {
@@ -24,9 +29,14 @@ function PageHeader() {
 }
 
 function PageContent({ children }: { children: ReactNode }) {
+  const { isSidebarOpen } = useSidebar();
   return (
-    <main className="tw-px-8 tw-pt-8 tw-ms-[250px] tw-z-10">
-      <div className="tw-w-full tw-min-h-[calc(100vh-18rem)] tw-max-w-[85rem] tw-mx-auto">
+    <main
+      className={`tw-px-8 tw-pt-8 tw-ms-0 md:tw-ms-[65px] lg:tw-ms-[250px] ${
+        isSidebarOpen ? "lg:tw-ms-[250px]" : "lg:tw-ms-[65px]"
+      } tw-z-10`}
+    >
+      <div className="tw-w-full tw-min-h-[calc(100vh-18rem)] tw-max-w-[100rem] tw-mx-auto">
         {children}
       </div>
       <Footer />
