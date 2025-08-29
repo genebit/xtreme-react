@@ -16,10 +16,9 @@ export default function Preloader() {
 
   return (
     <div
-      className={
-        "tw-fixed top-0 left-0 tw-w-screen tw-h-screen overflow-hidden tw-bg-white tw-transition-opacity tw-duration-500 tw-flex tw-items-center tw-justify-center " +
-        (isLoading ? "tw-opacity-100 tw-z-50" : "tw-opacity-0 tw-z-0")
-      }
+      className={`tw-fixed top-0 left-0 tw-w-screen tw-h-screen overflow-hidden tw-bg-white tw-transition-opacity tw-duration-700 tw-flex tw-items-center tw-justify-center ${
+        isLoading ? "tw-opacity-100 tw-z-50" : "tw-opacity-0 tw-z-0"
+      }`}
     >
       <span className="preloader"></span>
     </div>
