@@ -84,6 +84,7 @@ function SidebarNavLink({
   ...props
 }: SidebarNavLinkProps) {
   const [collapseItem, setCollapseItem] = useState<boolean>(true);
+  const { isSidebarOpen } = useSidebar();
 
   return (
     <li>
@@ -120,6 +121,8 @@ function SidebarNavLink({
             className={`tw-ml-6 tw-mt-1 tw-space-y-1 tw-flex tw-flex-col tw-gap-2 ${
               collapseItem
                 ? "tw-hidden"
+                : !isSidebarOpen
+                ? "!tw-hidden"
                 : "tw-hidden lg:tw-flex group-hover:tw-flex"
             } animate__animated animate__zoomIn animate__faster`}
           >
