@@ -21,11 +21,10 @@ import {
 } from "@remixicon/react";
 
 import { useSidebar } from "../contexts/SidebarContext";
-
-interface SidebarNavLinkWrapperProps {
-  className?: string;
-  children: React.ReactNode;
-}
+import {
+  SidebarNavLinkProps,
+  SidebarNavLinkWrapperProps,
+} from "../types/Sidebar";
 
 function SidebarNavLinkWrapper({
   className,
@@ -58,21 +57,6 @@ function SidebarNavLinkSectionWrapper({
       {children}
     </ul>
   );
-}
-
-interface SidebarNavLinkItemProps extends React.HTMLAttributes<HTMLElement> {
-  label: string;
-  href: string;
-  icon?: React.ReactNode;
-  className?: string;
-}
-
-interface SidebarNavLinkProps extends React.HTMLAttributes<HTMLElement> {
-  icon?: React.ReactNode;
-  type?: "link" | "btn" | "dropdown";
-  className?: string;
-  children: React.ReactNode;
-  items?: SidebarNavLinkItemProps[];
 }
 
 function SidebarNavLink({

@@ -1,129 +1,15 @@
-import ScrollSpy from "react-ui-scrollspy";
-import SectionButton from "./sections/SectionButton";
-import { Card, CardBody } from "react-bootstrap";
+import { Badge, Card, CardBody } from "react-bootstrap";
 import AdminLayout from "@/Layouts/AdminLayout";
-import SectionTypography from "./sections/SectionTypograph";
-import { ScrollSpyLink } from "./sections/ScrollSpy";
 
 export default function TemplateAdminPage() {
   return (
     <AdminLayout headTitle="Admin Dashboard">
-      <div className="tw-border tw-border-red-500 tw-border-dashed">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores illo
-        corrupti aperiam ullam deleniti voluptatibus aut quo reprehenderit,
-        sequi eos id rerum laborum voluptate repellat quas. Dicta iure
-        perferendis dolore laudantium voluptatum sapiente cumque fuga nostrum
-        voluptatibus adipisci veritatis nulla ex animi, assumenda ducimus alias
-        nemo, officia velit ea accusamus? Fugiat incidunt doloribus, minima ipsa
-        fuga labore earum rerum quod non explicabo! Numquam dolor dicta animi
-        consequuntur laudantium ab nulla quod asperiores, maiores, minima
-        sapiente repellat distinctio molestias neque voluptas temporibus rerum.
-        Unde in atque eius rem quasi aperiam quisquam? Enim neque, illum saepe
-        aliquid consequuntur vel tempore temporibus repellat, debitis itaque ab
-        aperiam hic tempora dolores quaerat nobis delectus non. Quas nam enim
-        hic cupiditate, cumque neque omnis! Excepturi doloribus nobis eius
-        aperiam velit consequatur atque ea et voluptatum ipsum perferendis nam
-        earum deleniti, sunt cupiditate veritatis eos iste libero quod dolores
-        repellat hic laborum totam error. Vitae, recusandae incidunt. Nemo
-        doloribus dolore non incidunt exercitationem ducimus rerum eos! Laborum
-        alias blanditiis itaque praesentium perferendis dolores omnis, quia
-        veritatis facilis odit quisquam nemo ex? Provident sed aliquam nemo
-        praesentium reprehenderit numquam neque nihil est earum asperiores,
-        ullam eligendi voluptas consectetur iusto dignissimos fugiat tempora
-        libero quae porro, quibusdam quisquam. Animi alias sequi nam cupiditate
-        placeat tenetur laborum aliquid, mollitia repudiandae blanditiis dolore
-        molestiae doloremque enim. Ad saepe veniam ab assumenda at sapiente.
-        Explicabo qui nisi, obcaecati mollitia provident aliquid tempore natus
-        facere harum ipsa recusandae sit distinctio voluptatibus quaerat ipsum
-        ut. Ducimus iusto vero maxime, inventore incidunt explicabo, unde non
-        itaque minima libero laborum. Quam dolore nam error provident
-        dignissimos molestias cupiditate ut voluptatibus est laboriosam esse,
-        praesentium quaerat totam non. Sed dignissimos placeat ut, hic excepturi
-        iure eligendi. Minus at quae maiores rem error consequatur accusamus
-        distinctio! Quisquam fugiat inventore, ducimus aliquid maxime
-        necessitatibus, velit illum omnis dolor adipisci atque libero!
-        Provident, consequatur ab excepturi et numquam amet dolorum aut quasi
-        velit magni corrupti quae dolore aspernatur laboriosam officiis. Optio
-        quam officia facilis deleniti, maxime fugit odio quos explicabo
-        veritatis quo adipisci qui vero cumque animi blanditiis? Debitis ad esse
-        pariatur maiores perspiciatis. Aliquam iure explicabo magni suscipit
-        obcaecati ducimus veritatis eum repellat dicta quibusdam est sed
-        provident exercitationem distinctio nam autem rerum, labore quis
-        eligendi adipisci quisquam cumque? Veritatis odio ipsa quae
-        necessitatibus nobis dolorem blanditiis libero illum autem in tempora ab
-        velit, ad optio quia, culpa atque nam esse. Temporibus, neque ullam
-        minima odio repudiandae dolor placeat quo rem ex alias magnam illum
-        recusandae laboriosam iure. Porro incidunt soluta ex deserunt deleniti
-        dolores consectetur omnis repudiandae ut, dolore non, praesentium dolor
-        delectus beatae, quam iusto similique. Laborum pariatur odio recusandae
-        voluptatem similique in, accusamus provident repellendus eos iure fugit?
-        Modi eligendi quos placeat rerum id doloremque iste distinctio quo minus
-        cumque! Impedit corporis, nobis, officiis laborum repudiandae cumque
-        temporibus a magnam asperiores culpa tenetur nesciunt veniam
-        consequuntur provident deserunt aliquid praesentium omnis hic soluta
-        nostrum odio at voluptate! Itaque possimus, exercitationem nam quibusdam
-        inventore esse laborum reiciendis laboriosam fugit porro corporis ex
-        quae natus, commodi fugiat architecto beatae quas adipisci magnam.
-        Itaque dicta quaerat iste aperiam! Mollitia magni, atque eum obcaecati
-        similique voluptatum laboriosam sequi omnis corrupti et autem,
-        voluptates, ipsa minima eius. Tempore aut maiores recusandae itaque rem,
-        sequi aliquid ullam non voluptatem amet velit corporis doloremque error
-        ea, quisquam voluptas ad perspiciatis, eius deserunt. Cum minus
-        aspernatur, ratione doloremque aliquid explicabo unde atque soluta
-        voluptas veniam? Ab reprehenderit incidunt, nesciunt ipsa quisquam
-        placeat harum, aut dolor culpa itaque quis facere adipisci quae officiis
-        ex natus quasi. Iure sunt fugit excepturi incidunt temporibus dolores
-        dolore ad, autem facilis mollitia, facere soluta eum odio, tenetur rem
-        ab obcaecati quibusdam ut consequatur possimus dignissimos? Quia, natus
-        esse amet quod minus illo doloremque maiores laudantium maxime magnam.
-        Adipisci veritatis sed asperiores quae dolorem maxime illum expedita
-        nisi, molestiae saepe dolorum, suscipit facere quasi aliquam sit? Sit
-        eos, ipsa veritatis rem, deserunt, libero cum id ratione perferendis ab
-        magni vel perspiciatis dolorum corrupti blanditiis obcaecati minus hic
-        excepturi quis repellendus! Illo, ipsum. Autem, aperiam consequatur.
-        Architecto, ipsa. Eius assumenda est eaque natus mollitia nihil ratione
-        voluptate temporibus minima aliquid quas hic repellendus corporis enim,
-        fuga recusandae nulla dignissimos magni amet possimus. Animi nesciunt
-        accusantium maiores eum sint ex ab eius minus dolorum praesentium! Optio
-        numquam voluptatibus cumque dolore dolorem quis sint mollitia,
-        dignissimos modi harum pariatur, tempora corrupti rerum accusamus fugit
-        ratione facere at! Eaque officiis voluptatem perspiciatis aspernatur,
-        tenetur hic dolores maiores? Sit, quam! Expedita distinctio aliquam quod
-        voluptates tempora optio obcaecati, doloremque maxime dolorem corporis
-        eaque blanditiis, illo atque fugit architecto iusto et placeat voluptas
-        amet dolores voluptatibus aut ducimus! Molestias provident, consequatur
-        dolorum consectetur nesciunt laborum rerum architecto non sequi vel
-        repudiandae saepe delectus aliquam quae aliquid et quia incidunt
-        accusamus minima qui quam cum modi ullam. Tempora maiores ut ducimus
-        adipisci nisi iste voluptates, aut dolores assumenda modi itaque
-        incidunt ab quibusdam quod facere officiis quasi eligendi laboriosam.
-        Ratione, autem deserunt? Sequi expedita error harum nobis perferendis
-        officiis quaerat, cupiditate reiciendis porro mollitia quas obcaecati
-        velit corrupti sint vero vitae maiores eaque consequatur necessitatibus!
-        Illum amet distinctio dicta in magni culpa sint voluptas, repellat earum
-        tempore! Sit animi omnis velit voluptates cupiditate ratione deserunt
-        eaque laudantium neque. Ad quibusdam ratione perspiciatis consequatur
-        accusantium similique fugiat dolorem nostrum pariatur, quas quaerat
-        ducimus asperiores debitis consequuntur fugit dolores error officiis
-        facilis aut aliquid, adipisci iste. Rerum maxime labore enim
-        voluptatibus tempore ab sint accusamus eum cupiditate, cum illum
-        debitis, repudiandae dolorem ea tenetur placeat id voluptate minus
-        necessitatibus. Eos nobis, asperiores cupiditate nihil perferendis
-        architecto, nulla fugiat et sint eum libero eaque harum sit! Praesentium
-        hic, magni nostrum fugit, dignissimos alias officiis corrupti corporis
-        qui, natus error sit. Quasi asperiores blanditiis reprehenderit
-        repellendus autem distinctio provident aut corporis! Numquam vero
-        voluptatibus velit voluptas ea ut doloremque ratione cum deserunt earum
-        rem dolore est aspernatur vel placeat accusamus, omnis voluptatem
-        officia molestiae qui veniam! Quasi, ratione sapiente suscipit provident
-        dicta veniam saepe sunt sit ab. Aspernatur adipisci, ad tempore esse,
-        vitae aperiam obcaecati quos consequatur debitis itaque eius.
-      </div>
-      {/* <Card className="tw-relative tw-shadow-2xl bg-dark tw-shadow-slate-400 tw-overflow-clip tw-mb-10">
+      <Card className="tw-relative bg-dark tw-shadow-slate-400 tw-overflow-clip tw-mb-10">
         <CardBody className="tw-py-10 tw-text-white">
           <h1 className="tw-text-2xl tw-font-black">Welcome back, John Doe!</h1>
           <p className="tw-mt-3 tw-text-base tw-text-muted-foreground">
-            Let's start by listing products for your buyers!
+            Let's start by navigating this xtreme template! Made with 3 cups of
+            coffee by <Badge>genebit</Badge>.
           </p>
           <span className="tw-absolute tw-right-16 tw-scale-[10]">
             <svg
@@ -149,22 +35,16 @@ export default function TemplateAdminPage() {
           </span>
         </CardBody>
       </Card>
-      <div className="tw-flex">
-        <div className="tw-basis-full">
-          <ScrollSpy scrollThrottle={10}>
-            <SectionTypography className="tw-mb-10" id="section--typography" />
-            <SectionButton className="tw-mb-10" id="section--btn" />
-          </ScrollSpy>
+      <div className="tw-flex tw-flex-col tw-gap-3">
+        <div className="tw-flex tw-flex-col lg:tw-flex-row tw-gap-3">
+          <Card className="tw-bg-white hover:tw-scale-102 tw-transition-transform tw-border lg:tw-basis-full tw-border-dashed tw-border-slate-400 tw-h-36"></Card>
+          <Card className="tw-bg-white hover:tw-scale-102 tw-transition-transform tw-border lg:tw-basis-full tw-border-dashed tw-border-slate-400 tw-h-36"></Card>
+          <Card className="tw-bg-white hover:tw-scale-102 tw-transition-transform tw-border lg:tw-basis-full tw-border-dashed tw-border-slate-400 tw-h-36"></Card>
+          <Card className="tw-bg-white hover:tw-scale-102 tw-transition-transform tw-border lg:tw-basis-full tw-border-dashed tw-border-slate-400 tw-h-36"></Card>
         </div>
-        <div className="tw-basis-1/4 tw-sticky tw-top-32 tw-h-max tw-px-5">
-          <ScrollSpyLink.Container>
-            <ScrollSpyLink jumpTo="section--typography">
-              Typography
-            </ScrollSpyLink>
-            <ScrollSpyLink jumpTo="section--btn">Button</ScrollSpyLink>
-          </ScrollSpyLink.Container>
-        </div>
-      </div> */}
+        <Card className="tw-bg-white hover:tw-scale-102 tw-transition-transform tw-border tw-border-dashed tw-border-slate-400 tw-h-60"></Card>
+        <Card className="tw-bg-white hover:tw-scale-102 tw-transition-transform tw-border tw-border-dashed tw-border-slate-400 tw-h-96"></Card>
+      </div>
     </AdminLayout>
   );
 }

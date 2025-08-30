@@ -1,10 +1,14 @@
-import { Button } from "react-bootstrap";
+import { useEffect, useRef, useState } from "react";
+
 import { twMerge } from "tailwind-merge";
-import { Dropdown } from "react-bootstrap";
+import { Card, Dropdown } from "react-bootstrap";
+import { Button, Col, Row } from "react-bootstrap";
 
 import {
   RiArrowDownSLine,
-  RiMenu3Line,
+  RiArrowUpSLine,
+  RiCompass3Line,
+  RiCornerDownRightLine,
   RiNotification3Line,
   RiSearchLine,
   RiSidebarFoldLine,
@@ -12,25 +16,10 @@ import {
 } from "@remixicon/react";
 
 import { useSidebar } from "../contexts/SidebarContext";
-
-interface NavbarLinkBaseProps extends React.HTMLAttributes<HTMLElement> {
-  alwaysPresent?: boolean;
-  toggler?: boolean;
-  className?: string;
-  children: React.ReactNode;
-}
-
-interface NavbarLinkProps extends NavbarLinkBaseProps {
-  type: "link";
-  href: string;
-}
-
-interface NavbarOptionProps extends NavbarLinkBaseProps {
-  type?: "button" | "wrapper";
-  href?: never;
-}
-
-type HeaderNavbarLinkProps = NavbarLinkProps | NavbarOptionProps;
+import {
+  HeaderNavbarLinkMegaProps,
+  HeaderNavbarLinkProps,
+} from "../types/HeaderNavbar";
 
 function HeaderNavbarLink({
   type = "wrapper",
@@ -82,6 +71,63 @@ function HeaderNavbarLink({
   );
 }
 
+function HeaderNavbarLinkMega({
+  label,
+  alwaysPresent = false,
+  className,
+  children,
+  ...props
+}: HeaderNavbarLinkMegaProps) {
+  const [isMegaDropdownOpen, setIsMegaDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const toggleDropdown = () => {
+    setIsMegaDropdownOpen(!isMegaDropdownOpen);
+  };
+
+  useEffect(() => {
+    if (!isMegaDropdownOpen) return;
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsMegaDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isMegaDropdownOpen]);
+
+  return (
+    <div className="tw-h-full" ref={dropdownRef}>
+      <HeaderNavbar.Link
+        className="!tw-text-white"
+        type="button"
+        alwaysPresent={alwaysPresent}
+        {...props}
+        onClick={toggleDropdown}
+      >
+        {label}
+        {isMegaDropdownOpen ? (
+          <RiArrowUpSLine size={18} className="tw-ms-1" />
+        ) : (
+          <RiArrowDownSLine size={18} className="tw-ms-1" />
+        )}
+      </HeaderNavbar.Link>
+      <div
+        className={`${
+          isMegaDropdownOpen ? "tw-block" : "tw-hidden"
+        } tw-w-full animate__animated animate__zoomIn animate__faster tw-px-6 tw-py-8 tw-pb-10 tw-bg-white tw-shadow-2xl tw-shadow-neutral-400 tw-absolute tw-left-0 tw-top-full`}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
+
 function HeaderNavbarWrapper({
   children,
   className,
@@ -110,7 +156,7 @@ function HeaderNavbar() {
     <nav
       className={`tw-px-4 tw-h-16 bg-dark-blue tw-ms-0 md:tw-ms-[65px] lg:tw-ms-[250px] ${
         isSidebarOpen ? "lg:tw-ms-[250px]" : "lg:tw-ms-[65px]"
-      } tw-transition-all tw-border-b-[5px] tw-border-amber-500 tw-flex tw-items-center`}
+      } tw-transition-all tw-border-b-[5px] tw-border-amber-500 tw-flex tw-items-center tw-relative`}
     >
       <HeaderNavbar.Wrapper>
         <HeaderNavbar.Link
@@ -125,23 +171,99 @@ function HeaderNavbar() {
             <RiSidebarUnfoldFill className="tw-text-white" />
           )}
         </HeaderNavbar.Link>
-        <HeaderNavbar.Link>
-          <Dropdown align="start" className="tw-h-full tw-w-full">
-            <Dropdown.Toggle
-              as="div"
-              className="tw-flex tw-border-0 tw-items-center !tw-text-white tw-rounded-none tw-gap-2 hover:tw-cursor-pointer tw-h-full waves-effect waves-light"
-              id="mega-dropdown-toggle"
-            >
-              Tasks
-              <RiArrowDownSLine />
-            </Dropdown.Toggle>
-            <Dropdown.Menu className="tw-bg-white tw-shadow-2xl tw-shadow-neutral-400 tw-rounded-b-lg !tw-w-full !tw-left-0 !tw-right-0 animate__animated animate__zoomIn animate__faster">
-              <Dropdown.Item>Task 1</Dropdown.Item>
-              <Dropdown.Item>Task 2</Dropdown.Item>
-              <Dropdown.Item>Task 3</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-        </HeaderNavbar.Link>
+        <HeaderNavbarLink.Mega label="Tasks">
+          <Row>
+            <Col md="4">
+              <h4 className="tw-font-light tw-uppercase tw-text-sm tw-tracking-wider">
+                Tasks
+              </h4>
+              <ul className="tw-ms-4 *:tw-my-2">
+                <li className="tw-flex tw-items-center tw-gap-2">
+                  <RiCornerDownRightLine size={18} />
+                  CI/CD Pipeline Setup in GitHub
+                </li>
+                <li className="tw-flex tw-items-center tw-gap-2">
+                  <RiCornerDownRightLine size={18} />
+                  Implement User Authentication
+                </li>
+                <li className="tw-flex tw-items-center tw-gap-2">
+                  <RiCornerDownRightLine size={18} />
+                  Design Dashboard UI
+                </li>
+                <li className="tw-flex tw-items-center tw-gap-2">
+                  <RiCornerDownRightLine size={18} />
+                  Integrate Payment Gateway
+                </li>
+                <li className="tw-flex tw-items-center tw-gap-2">
+                  <RiCornerDownRightLine size={18} />
+                  Write Unit Tests
+                </li>
+              </ul>
+            </Col>
+            <Col md="4">
+              <h4 className="tw-font-light tw-uppercase tw-text-sm tw-tracking-wider">
+                Remaining
+              </h4>
+              <ul className="tw-ms-4 *:tw-my-2">
+                <li className="tw-flex tw-items-center tw-gap-2">
+                  <RiCornerDownRightLine size={18} />
+                  Optimize Database Queries
+                </li>
+                <li className="tw-flex tw-items-center tw-gap-2">
+                  <RiCornerDownRightLine size={18} />
+                  Implement Role-Based Access Control
+                </li>
+                <li className="tw-flex tw-items-center tw-gap-2">
+                  <RiCornerDownRightLine size={18} />
+                  Configure Email Notifications
+                </li>
+                <li className="tw-flex tw-items-center tw-gap-2">
+                  <RiCornerDownRightLine size={18} />
+                  Set Up Error Logging
+                </li>
+                <li className="tw-flex tw-items-center tw-gap-2">
+                  <RiCornerDownRightLine size={18} />
+                  Refactor Redux Store
+                </li>
+                <li className="tw-flex tw-items-center tw-gap-2">
+                  <RiCornerDownRightLine size={18} />
+                  Update Documentation
+                </li>
+              </ul>
+            </Col>
+            <Col md="4">
+              <h4 className="tw-font-light tw-uppercase tw-text-sm tw-tracking-wider">
+                Archived
+              </h4>
+              <ul className="tw-ms-4 *:tw-my-2">
+                <li className="tw-flex tw-items-center tw-gap-2">
+                  <RiCornerDownRightLine size={18} />
+                  Initial Project Setup
+                </li>
+                <li className="tw-flex tw-items-center tw-gap-2">
+                  <RiCornerDownRightLine size={18} />
+                  Configure ESLint & Prettier
+                </li>
+                <li className="tw-flex tw-items-center tw-gap-2">
+                  <RiCornerDownRightLine size={18} />
+                  Deploy to Staging
+                </li>
+                <li className="tw-flex tw-items-center tw-gap-2">
+                  <RiCornerDownRightLine size={18} />
+                  Fix Login Bug
+                </li>
+                <li className="tw-flex tw-items-center tw-gap-2">
+                  <RiCornerDownRightLine size={18} />
+                  Update Landing Page
+                </li>
+                <li className="tw-flex tw-items-center tw-gap-2">
+                  <RiCornerDownRightLine size={18} />
+                  Remove Deprecated APIs
+                </li>
+              </ul>
+            </Col>
+          </Row>
+        </HeaderNavbarLink.Mega>
       </HeaderNavbar.Wrapper>
       <HeaderNavbar.Wrapper className="tw-ms-auto">
         <HeaderNavbar.Link type="link" href="#">
@@ -216,7 +338,7 @@ function HeaderNavbar() {
               id="user-dropdown-toggle"
             >
               <img
-                src="https://ui-avatars.com/api/?name=John+Doe&background=0D8ABC&color=fff"
+                src="https://i.pravatar.cc/36"
                 alt="Avatar"
                 className="rounded-circle tw-select-none"
                 width={36}
@@ -231,7 +353,7 @@ function HeaderNavbar() {
             <Dropdown.Menu className="tw-bg-white tw-shadow-2xl tw-shadow-neutral-400 tw-rounded-lg tw-py-2 tw-w-60 animate__animated animate__zoomIn animate__faster">
               <div className="tw-px-4 tw-py-2 tw-flex tw-items-center tw-gap-3">
                 <img
-                  src="https://ui-avatars.com/api/?name=John+Doe&background=0D8ABC&color=fff"
+                  src="https://i.pravatar.cc/36"
                   alt="Avatar"
                   className="tw-rounded-full"
                   width={40}
@@ -245,7 +367,7 @@ function HeaderNavbar() {
                     john.doe@email.com
                   </div>
                   <div className="tw-text-xs tw-text-amber-600 tw-font-medium">
-                    Admin
+                    Administrator
                   </div>
                 </div>
               </div>
@@ -272,59 +394,17 @@ function HeaderNavbar() {
             </Dropdown.Menu>
           </Dropdown>
         </HeaderNavbar.Link>
-        <HeaderNavbar.Link className="tw-flex lg:tw-hidden" toggler>
-          <Dropdown align="end" className="tw-h-full tw-w-full">
-            <Dropdown.Toggle
-              as="div" // prevents default caret
-              className="tw-border-0 tw-flex tw-items-center tw-rounded-none tw-w-full tw-h-full tw-text-white hover:tw-cursor-pointer waves-effect waves-light"
-              id="navbar-dropdown-toggle"
-            >
-              <RiMenu3Line className="tw-text-white" />
-            </Dropdown.Toggle>
-            <Dropdown.Menu className="tw-w-96 tw-rounded-lg tw-shadow-2xl tw-shadow-neutral-400 tw-overflow-hidden">
-              <Dropdown.Item href="#">Management</Dropdown.Item>
-              <Dropdown.Item href="#">Inventory</Dropdown.Item>
-              <Dropdown.Divider />
-              <div className="tw-px-3 tw-py-2 tw-relative">
-                <input
-                  type="search"
-                  placeholder="Search..."
-                  className="form-control tw-rounded-md tw-border tw-w-full tw-ps-10"
-                />
-                <RiSearchLine
-                  className="tw-absolute tw-top-1/2 tw-left-6 tw-transform tw--translate-y-1/2"
-                  size={20}
-                />
-              </div>
-              <Dropdown.Divider />
-              <div className="tw-px-3 tw-py-2">
-                <h6 className="tw-text-xs tw-font-bold tw-uppercase tw-text-gray-500">
-                  Notifications
-                </h6>
-                <div className="tw-max-h-40 tw-overflow-y-auto tw-mt-2">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <div
-                      key={i}
-                      className="tw-text-xs tw-bg-slate-200 tw-rounded tw-h-6 tw-w-full tw-mb-1"
-                    ></div>
-                  ))}
-                </div>
-              </div>
-              <Dropdown.Divider />
-              <Dropdown.Item href="/profile">Profile</Dropdown.Item>
-              <Dropdown.Item href="/settings">Settings</Dropdown.Item>
-              <Dropdown.Item href="/logout" className="tw-text-red-600">
-                Logout
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-        </HeaderNavbar.Link>
+        <HeaderNavbarLink.Mega toggler label={<RiCompass3Line />}>
+          <Card className="tw-bg-slate-300 tw-animate-pulse tw-h-12 tw-mb-2 tw-border-none"></Card>
+          <Card className="tw-bg-slate-300 tw-animate-pulse tw-h-32 tw-border-none"></Card>
+        </HeaderNavbarLink.Mega>
       </HeaderNavbar.Wrapper>
     </nav>
   );
 }
 
 HeaderNavbar.Link = HeaderNavbarLink;
+HeaderNavbarLink.Mega = HeaderNavbarLinkMega;
 HeaderNavbar.Wrapper = HeaderNavbarWrapper;
 
 export { HeaderNavbar };

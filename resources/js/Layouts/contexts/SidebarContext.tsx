@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { createContext, ReactNode, useContext, useState } from "react";
 
-export type SidebarContextType = {
+type SidebarContextType = {
   isSidebarOpen: boolean;
   isSidebarHidden: boolean;
   toggleSidebar: () => void;

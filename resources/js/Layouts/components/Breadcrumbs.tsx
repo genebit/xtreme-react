@@ -16,10 +16,8 @@ export default function Breadcrumbs() {
     >
       <ol className="tw-m-0 breadcrumb tw-ps-4">
         <li className="breadcrumb-item">Home</li>
-        <li className="breadcrumb-item">Section</li>
-        <li className="breadcrumb-item">Subsection</li>
         <li className="breadcrumb-item active" aria-current="page">
-          Page Title
+          Blocks
         </li>
       </ol>
     </nav>
