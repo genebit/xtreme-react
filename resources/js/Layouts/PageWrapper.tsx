@@ -1,7 +1,8 @@
 import { ReactNode } from "react";
-import Breadcrumbs from "./components/Breadcrumbs";
+
 import Footer from "./components/Footer";
 import Sidebar from "./components/Sidebar";
+import Breadcrumbs from "./components/Breadcrumbs";
 import { HeaderNavbar } from "./components/HeaderNavbar";
 import { SidebarProvider, useSidebar } from "./contexts/SidebarContext";
 

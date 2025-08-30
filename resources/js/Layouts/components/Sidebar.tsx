@@ -1,3 +1,8 @@
+import { useState } from "react";
+
+import { twMerge } from "tailwind-merge";
+import { Badge, Button, Card, Form } from "react-bootstrap";
+
 import {
   RiAccountBoxLine,
   RiAddLine,
@@ -6,21 +11,16 @@ import {
   RiArrowUpSLine,
   RiBellLine,
   RiBriefcase2Line,
+  RiCalendar2Line,
   RiCornerDownRightLine,
   RiDashboard3Line,
-  RiHome2Line,
-  RiImportLine,
+  RiFilter2Line,
   RiLogoutBoxLine,
-  RiMore2Line,
   RiMoreLine,
-  RiSettings3Line,
-  RiUser6Fill,
-  RiUser6Line,
+  RiTrelloLine,
 } from "@remixicon/react";
-import { Badge, Button, NavLink } from "react-bootstrap";
-import { twMerge } from "tailwind-merge";
+
 import { useSidebar } from "../contexts/SidebarContext";
-import { useState } from "react";
 
 interface SidebarNavLinkWrapperProps {
   className?: string;
@@ -33,9 +33,30 @@ function SidebarNavLinkWrapper({
   ...props
 }: SidebarNavLinkWrapperProps) {
   return (
-    <nav {...props} className={twMerge("tw-mt-3", className)}>
-      <ul className="tw-flex tw-flex-col tw-gap-3">{children}</ul>
+    <nav
+      {...props}
+      className={twMerge(
+        "tw-mt-3 tw-flex tw-flex-col tw-gap-3 tw-min-h-[calc(100vh-9rem)]",
+        className
+      )}
+    >
+      {children}
     </nav>
+  );
+}
+
+function SidebarNavLinkSectionWrapper({
+  className,
+  children,
+  ...props
+}: SidebarNavLinkWrapperProps) {
+  return (
+    <ul
+      className={twMerge("tw-flex tw-flex-col tw-gap-3", className)}
+      {...props}
+    >
+      {children}
+    </ul>
   );
 }
 
@@ -146,8 +167,6 @@ function SidebarNavHeader({
   children,
   ...props
 }: SidebarNavLinkProps) {
-  const { isSidebarOpen } = useSidebar();
-
   return (
     <li>
       <span
@@ -166,99 +185,156 @@ function SidebarNavHeader({
   );
 }
 
-export default function Sidebar() {
-  const { isSidebarOpen } = useSidebar();
+function Sidebar() {
+  const { isSidebarOpen, isSidebarHidden } = useSidebar();
 
   return (
     <aside
-      className={`tw-group tw-fixed tw-min-h-screen -tw-translate-x-full md:tw-translate-x-0 md:tw-w-[65px] hover:md:tw-w-[250px] ${
-        isSidebarOpen ? "lg:tw-w-[250px]" : "lg:tw-w-[65px]"
-      } tw-transition-all tw-p-3 bg-dark tw-z-40 tw-overflow-clip`}
+      id="sidebarNavigation"
+      className={`tw-group tw-fixed tw-h-screen -tw-translate-x-full md:tw-translate-x-0 md:tw-w-[65px] hover:md:tw-w-[250px] ${
+        isSidebarOpen ? "tw-translate-x-0 lg:tw-w-[250px]" : "lg:tw-w-[65px]"
+      } tw-transition-all tw-p-3 bg-dark tw-z-40 tw-overflow-clip hover:tw-overflow-y-auto`}
     >
-      <div className="tw-flex tw-gap-3 tw-flex-row tw-items-center">
-        <span
-          className={`tw-min-w-9 tw-min-h-9 tw-object-cover tw-rounded-full tw-bg-gray-300 tw-flex tw-items-center tw-justify-center tw-mx-auto lg:tw-m-0 group-hover:tw-m-0 ${
-            isSidebarOpen ? "tw-m-0" : "lg:tw-mx-auto"
-          }`}
-          aria-label="Sample Logo"
-        >
-          LG
-        </span>
-        <span
-          className={`tw-text-white tw-font-big-shot tw-uppercase tw-hidden lg:tw-inline group-hover:tw-inline ${
-            isSidebarOpen ? "tw-inline" : "lg:tw-hidden"
-          }`}
-        >
-          Application
-        </span>
-      </div>
-      <div className="tw-flex tw-items-center tw-gap-3 tw-mt-4">
-        <img
-          src="https://i.pravatar.cc/36"
-          alt="User Avatar"
-          className={`tw-w-9 tw-h-9 tw-rounded-full tw-bg-gray-300 tw-object-cover tw-mx-auto lg:tw-m-0 group-hover:tw-m-0 ${
-            isSidebarOpen ? "tw-m-0" : "lg:tw-mx-auto"
-          }`}
-        />
-        <div
-          className={`tw-flex-col tw-min-w-0 tw-hidden lg:tw-flex group-hover:tw-flex ${
-            isSidebarOpen ? "tw-flex" : "lg:tw-hidden"
-          }`}
-        >
-          <span className="tw-text-white tw-font-semibold tw-truncate tw-max-w-[140px]">
-            John Doe
+      <header className="tw-sticky tw-top-0 tw-z-30 bg-dark tw-pb-3">
+        <div className="tw-flex tw-gap-3 tw-flex-row tw-items-center">
+          <span
+            className={`tw-min-w-9 tw-min-h-9 tw-object-cover tw-rounded-full tw-flex tw-items-center tw-justify-center tw-mx-auto lg:tw-m-0 group-hover:tw-m-0 ${
+              isSidebarOpen && isSidebarHidden
+                ? "!tw-m-0"
+                : isSidebarOpen
+                ? "tw-m-0"
+                : "lg:tw-mx-auto"
+            }`}
+            aria-label="Sample Logo"
+          >
+            <img
+              src="/assets/imgs/logo-icon.png"
+              alt=""
+              className="tw-max-w-9 tw-brightness-200"
+            />
           </span>
-          <span className="tw-text-gray-400 tw-text-xs tw-truncate tw-max-w-[140px]">
-            Senior Developer
+          <span
+            className={`tw-text-white tw-font-big-shot tw-uppercase tw-hidden lg:tw-inline group-hover:tw-inline ${
+              isSidebarOpen && isSidebarHidden
+                ? "!tw-inline"
+                : isSidebarOpen
+                ? "tw-inline"
+                : "lg:tw-hidden"
+            }`}
+          >
+            XTREME
           </span>
         </div>
-      </div>
-      <SidebarNavLinkWrapper>
-        <SidebarNavLink icon={<RiAddLine size={18} />} type="btn">
-          Create Tasks
-        </SidebarNavLink>
-        <SidebarNavHeader>Navigation</SidebarNavHeader>
-        <SidebarNavLink
-          type="dropdown"
-          icon={<RiDashboard3Line size={18} />}
-          items={[
-            { label: "Overview", href: "/overview" },
-            { label: "Reports", href: "/reports" },
-          ]}
-        >
-          Dashboard
-        </SidebarNavLink>
-        <SidebarNavLink icon={<RiUser6Line size={18} />}>
-          Employee Management
-        </SidebarNavLink>
-        <SidebarNavLink icon={<RiSettings3Line size={18} />}>
-          Settings
-        </SidebarNavLink>
-      </SidebarNavLinkWrapper>
-      <SidebarNavLinkWrapper className="tw-mt-6">
-        <SidebarNavHeader>Projects</SidebarNavHeader>
-        <SidebarNavLink icon={<RiBriefcase2Line size={18} />}>
-          Active Projects <Badge bg="primary">4</Badge>
-        </SidebarNavLink>
-        <SidebarNavLink icon={<RiArchive2Line size={18} />}>
-          Archived Projects
-        </SidebarNavLink>
-      </SidebarNavLinkWrapper>
-      <SidebarNavLinkWrapper className="tw-mt-6">
-        <SidebarNavHeader>Account</SidebarNavHeader>
-        <SidebarNavLink icon={<RiAccountBoxLine size={18} />}>
-          Profile
-        </SidebarNavLink>
-        <SidebarNavLink icon={<RiBellLine size={18} />}>
-          Notifications <Badge bg="danger">9+</Badge>
-        </SidebarNavLink>
-        <SidebarNavLink
-          className="text-danger"
-          icon={<RiLogoutBoxLine size={18} />}
-        >
-          Logout
-        </SidebarNavLink>
-      </SidebarNavLinkWrapper>
+        <div className="tw-flex tw-items-center tw-gap-3 tw-mt-4">
+          <img
+            src="https://i.pravatar.cc/36"
+            alt="User Avatar"
+            className={`tw-w-9 tw-h-9 tw-rounded-full tw-bg-gray-300 tw-object-cover tw-mx-auto lg:tw-m-0 group-hover:tw-m-0 ${
+              isSidebarOpen && isSidebarHidden
+                ? "!tw-m-0"
+                : isSidebarOpen
+                ? "tw-m-0"
+                : "lg:tw-mx-auto"
+            }`}
+          />
+          <div
+            className={`tw-flex-col tw-min-w-0 tw-hidden lg:tw-flex group-hover:tw-flex ${
+              isSidebarOpen && isSidebarHidden
+                ? "!tw-flex"
+                : isSidebarOpen
+                ? "tw-flex"
+                : "lg:tw-hidden"
+            }`}
+          >
+            <span className="tw-text-white tw-font-semibold tw-truncate">
+              John Doe
+            </span>
+            <span className="tw-text-gray-400 tw-text-xs tw-truncate">
+              Full-stack Web Developer
+            </span>
+          </div>
+        </div>
+      </header>
+      <Sidebar.NavWrapper className="tw-z-20">
+        <Sidebar.NavSectionWrapper>
+          <Sidebar.NavLink icon={<RiAddLine size={18} />} type="btn">
+            Create Tasks
+          </Sidebar.NavLink>
+          <Sidebar.NavHeader>Navigation</Sidebar.NavHeader>
+          <Sidebar.NavLink icon={<RiDashboard3Line size={18} />}>
+            Dashboard
+          </Sidebar.NavLink>
+          <Sidebar.NavLink icon={<RiTrelloLine size={18} />}>
+            My Tasks
+          </Sidebar.NavLink>
+          <Sidebar.NavLink icon={<RiCalendar2Line size={18} />}>
+            Company Events
+          </Sidebar.NavLink>
+          <Sidebar.NavLink
+            type="dropdown"
+            icon={<RiFilter2Line size={18} />}
+            items={[
+              { label: "Overview", href: "/overview" },
+              { label: "Export", href: "/export" },
+            ]}
+          >
+            Reports
+          </Sidebar.NavLink>
+        </Sidebar.NavSectionWrapper>
+        <Sidebar.NavSectionWrapper>
+          <Sidebar.NavHeader>Projects</Sidebar.NavHeader>
+          <Sidebar.NavLink icon={<RiBriefcase2Line size={18} />}>
+            Active Projects <Badge bg="primary">4</Badge>
+          </Sidebar.NavLink>
+          <Sidebar.NavLink icon={<RiArchive2Line size={18} />}>
+            Archived Projects
+          </Sidebar.NavLink>
+        </Sidebar.NavSectionWrapper>
+        <Sidebar.NavSectionWrapper>
+          <Sidebar.NavHeader>Account</Sidebar.NavHeader>
+          <Sidebar.NavLink icon={<RiAccountBoxLine size={18} />}>
+            Profile
+          </Sidebar.NavLink>
+          <Sidebar.NavLink icon={<RiBellLine size={18} />}>
+            Notifications <Badge bg="danger">9+</Badge>
+          </Sidebar.NavLink>
+          <Sidebar.NavLink
+            className="text-danger"
+            icon={<RiLogoutBoxLine size={18} />}
+          >
+            Logout
+          </Sidebar.NavLink>
+        </Sidebar.NavSectionWrapper>
+        <Sidebar.NavSectionWrapper className="tw-mt-auto">
+          <Card
+            className={`tw-bg-transparent tw-border-neutral-400 tw-hidden lg:tw-inline group-hover:tw-inline ${
+              isSidebarOpen && isSidebarHidden
+                ? "!tw-inline"
+                : isSidebarOpen
+                ? "tw-inline"
+                : "lg:tw-hidden"
+            }`}
+          >
+            <Card.Body className="tw-py-2">
+              <Form>
+                <Form.Check
+                  className="tw-text-white tw-whitespace-nowrap"
+                  type="switch"
+                  id="custom-switch"
+                  label="Dark Mode"
+                />
+              </Form>
+            </Card.Body>
+          </Card>
+        </Sidebar.NavSectionWrapper>
+      </Sidebar.NavWrapper>
     </aside>
   );
 }
+
+Sidebar.NavLink = SidebarNavLink;
+Sidebar.NavHeader = SidebarNavHeader;
+Sidebar.NavWrapper = SidebarNavLinkWrapper;
+Sidebar.NavSectionWrapper = SidebarNavLinkSectionWrapper;
+
+export default Sidebar;

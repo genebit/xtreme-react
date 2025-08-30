@@ -1,3 +1,7 @@
+import { Button } from "react-bootstrap";
+import { twMerge } from "tailwind-merge";
+import { Dropdown } from "react-bootstrap";
+
 import {
   RiArrowDownSLine,
   RiMenu3Line,
@@ -5,13 +9,9 @@ import {
   RiSearchLine,
   RiSidebarFoldLine,
   RiSidebarUnfoldFill,
-  RiSidebarUnfoldLine,
 } from "@remixicon/react";
-import { Button } from "react-bootstrap";
-import { twMerge } from "tailwind-merge";
-import { Dropdown } from "react-bootstrap";
+
 import { useSidebar } from "../contexts/SidebarContext";
-import { useEffect } from "react";
 
 interface NavbarLinkBaseProps extends React.HTMLAttributes<HTMLElement> {
   alwaysPresent?: boolean;
@@ -112,15 +112,20 @@ function HeaderNavbar() {
         isSidebarOpen ? "lg:tw-ms-[250px]" : "lg:tw-ms-[65px]"
       } tw-transition-all tw-border-b-[5px] tw-border-amber-500 tw-flex tw-items-center`}
     >
-      <HeaderNavbarWrapper>
-        <HeaderNavbarLink type="button" alwaysPresent onClick={toggleSidebar}>
+      <HeaderNavbar.Wrapper>
+        <HeaderNavbar.Link
+          type="button"
+          className="md:tw-hidden lg:tw-inline"
+          alwaysPresent
+          onClick={toggleSidebar}
+        >
           {isSidebarOpen ? (
             <RiSidebarFoldLine className="tw-text-white" />
           ) : (
             <RiSidebarUnfoldFill className="tw-text-white" />
           )}
-        </HeaderNavbarLink>
-        <HeaderNavbarLink>
+        </HeaderNavbar.Link>
+        <HeaderNavbar.Link>
           <Dropdown align="start" className="tw-h-full tw-w-full">
             <Dropdown.Toggle
               as="div"
@@ -136,16 +141,16 @@ function HeaderNavbar() {
               <Dropdown.Item>Task 3</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-        </HeaderNavbarLink>
-      </HeaderNavbarWrapper>
-      <HeaderNavbarWrapper className="tw-ms-auto">
-        <HeaderNavbarLink type="link" href="#">
+        </HeaderNavbar.Link>
+      </HeaderNavbar.Wrapper>
+      <HeaderNavbar.Wrapper className="tw-ms-auto">
+        <HeaderNavbar.Link type="link" href="#">
           Management
-        </HeaderNavbarLink>
-        <HeaderNavbarLink type="link" href="#">
+        </HeaderNavbar.Link>
+        <HeaderNavbar.Link type="link" href="#">
           Inventory
-        </HeaderNavbarLink>
-        <HeaderNavbarLink>
+        </HeaderNavbar.Link>
+        <HeaderNavbar.Link>
           <div className="tw-relative tw-w-56 tw-ms-auto hover:tw-w-full tw-transition-[width] tw-shadow-2xl tw-shadow-neutral-400">
             <input
               type="search"
@@ -167,8 +172,8 @@ function HeaderNavbar() {
               </span>
             </div>
           </div>
-        </HeaderNavbarLink>
-        <HeaderNavbarLink>
+        </HeaderNavbar.Link>
+        <HeaderNavbar.Link alwaysPresent>
           <Dropdown align="end" className="tw-h-full tw-w-full">
             <Dropdown.Toggle
               variant="icon"
@@ -202,8 +207,8 @@ function HeaderNavbar() {
               </div>
             </Dropdown.Menu>
           </Dropdown>
-        </HeaderNavbarLink>
-        <HeaderNavbarLink>
+        </HeaderNavbar.Link>
+        <HeaderNavbar.Link alwaysPresent>
           <Dropdown align="end" className="tw-h-full">
             <Dropdown.Toggle
               variant="icon"
@@ -266,8 +271,8 @@ function HeaderNavbar() {
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-        </HeaderNavbarLink>
-        <HeaderNavbarLink className="tw-flex lg:tw-hidden" toggler>
+        </HeaderNavbar.Link>
+        <HeaderNavbar.Link className="tw-flex lg:tw-hidden" toggler>
           <Dropdown align="end" className="tw-h-full tw-w-full">
             <Dropdown.Toggle
               as="div" // prevents default caret
@@ -280,7 +285,6 @@ function HeaderNavbar() {
               <Dropdown.Item href="#">Management</Dropdown.Item>
               <Dropdown.Item href="#">Inventory</Dropdown.Item>
               <Dropdown.Divider />
-
               <div className="tw-px-3 tw-py-2 tw-relative">
                 <input
                   type="search"
@@ -293,8 +297,6 @@ function HeaderNavbar() {
                 />
               </div>
               <Dropdown.Divider />
-
-              {/* Notifications */}
               <div className="tw-px-3 tw-py-2">
                 <h6 className="tw-text-xs tw-font-bold tw-uppercase tw-text-gray-500">
                   Notifications
@@ -309,8 +311,6 @@ function HeaderNavbar() {
                 </div>
               </div>
               <Dropdown.Divider />
-
-              {/* User menu */}
               <Dropdown.Item href="/profile">Profile</Dropdown.Item>
               <Dropdown.Item href="/settings">Settings</Dropdown.Item>
               <Dropdown.Item href="/logout" className="tw-text-red-600">
@@ -318,12 +318,13 @@ function HeaderNavbar() {
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-        </HeaderNavbarLink>
-      </HeaderNavbarWrapper>
+        </HeaderNavbar.Link>
+      </HeaderNavbar.Wrapper>
     </nav>
   );
 }
 
-HeaderNavbar.NavLink = HeaderNavbarLink;
+HeaderNavbar.Link = HeaderNavbarLink;
+HeaderNavbar.Wrapper = HeaderNavbarWrapper;
 
 export { HeaderNavbar };
