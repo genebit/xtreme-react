@@ -1,0 +1,3 @@
+.active-scroll-spy {
+  @apply tw-border-s-4 tw-border-s-amber-500;
+}

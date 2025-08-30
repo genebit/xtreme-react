@@ -2,30 +2,17 @@ import { useEffect, useState } from "react";
 
 export default function Preloader() {
   const [isLoading, setIsLoading] = useState(true);
-  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    const handleLoad = () => {
-      // First, mark loading as done
-      setTimeout(() => {
-        setIsLoading(false);
-        // Remove from DOM after fade-out duration
-        setTimeout(() => setIsVisible(false), 500);
-      }, 500);
-    };
+    const handleLoad = () => setIsLoading(false);
 
     if (document.readyState === "complete") {
-      handleLoad();
+      setIsLoading(false);
     } else {
       window.addEventListener("load", handleLoad);
+      return () => window.removeEventListener("load", handleLoad);
     }
-
-    return () => {
-      window.removeEventListener("load", handleLoad);
-    };
   }, []);
-
-  if (!isVisible) return null;
 
   return (
     <div

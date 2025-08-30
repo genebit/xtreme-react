@@ -1,7 +1,19 @@
-@import "bootstrap/dist/css/bootstrap.min.css";
-@import "materialize-css/dist/css/materialize.min.css";
+@import "../scss/bs-scheme.scss";
 @import "loader.css";
+@import "typography.css";
+@import "animate.css";
+@import "scrollbar.css";
+@import "pace-js/themes/blue/pace-theme-minimal.css";
+@import "pace.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.dropdown-toggle::after {
+  @apply !tw-hidden;
+}
+
+.animate__zoomIn.animate__animated {
+  --animate-duration: 200ms;
+}
