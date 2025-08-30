@@ -1,19 +1,22 @@
+/* Boostrap 5 Overloader */
 @import "../scss/bs-scheme.scss";
+
+/* Custom CSS */
 @import "loader.css";
 @import "typography.css";
 @import "animate.css";
 @import "scrollbar.css";
+@import "components.css";
+
+/* Plugins Related */
 @import "pace-js/themes/blue/pace-theme-minimal.css";
 @import "pace.css";
 
+@import "datatables.net-bs5/css/dataTables.bootstrap5.css";
+@import "datatables.net-responsive-bs5/css/responsive.bootstrap5.css";
+@import "datatables.net-select-bs5/css/select.bootstrap5.css";
+
+/* Tailwind Base */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-.dropdown-toggle::after {
-  @apply !tw-hidden;
-}
-
-.animate__zoomIn.animate__animated {
-  --animate-duration: 200ms;
-}
