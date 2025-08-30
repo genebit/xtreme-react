@@ -1,7 +1,7 @@
 import "./bootstrap";
 import "../css/app.css";
-import "materialize-css/dist/js/materialize.min.js";
-import "notyf/notyf.min.js";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import "pace-js";
 
 import { createRoot } from "react-dom/client";
 import { createInertiaApp } from "@inertiajs/react";

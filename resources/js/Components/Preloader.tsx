@@ -2,35 +2,22 @@ import { useEffect, useState } from "react";
 
 export default function Preloader() {
   const [isLoading, setIsLoading] = useState(true);
-  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    const handleLoad = () => {
-      // First, mark loading as done
-      setTimeout(() => {
-        setIsLoading(false);
-        // Remove from DOM after fade-out duration
-        setTimeout(() => setIsVisible(false), 500);
-      }, 500);
-    };
+    const handleLoad = () => setIsLoading(false);
 
     if (document.readyState === "complete") {
-      handleLoad();
+      setIsLoading(false);
     } else {
       window.addEventListener("load", handleLoad);
+      return () => window.removeEventListener("load", handleLoad);
     }
-
-    return () => {
-      window.removeEventListener("load", handleLoad);
-    };
   }, []);
-
-  if (!isVisible) return null;
 
   return (
     <div
-      className={`fixed top-0 left-0 z-50 flex items-center justify-center w-screen h-screen overflow-hidden bg-white transition-opacity duration-500 ${
-        !isLoading ? "opacity-0" : "opacity-100"
+      className={`tw-fixed top-0 left-0 tw-w-screen tw-h-screen overflow-hidden tw-bg-white tw-transition-opacity tw-duration-700 tw-flex tw-items-center tw-justify-center ${
+        isLoading ? "tw-opacity-100 tw-z-50" : "tw-opacity-0 tw-z-0"
       }`}
     >
       <span className="preloader"></span>

@@ -25,9 +25,13 @@
     },
     "dependencies": {
         "@remixicon/react": "^4.6.0",
+        "animate.css": "^4.1.1",
         "bootstrap": "^5.3.7",
-        "materialize-css": "1.0.0-rc.2",
-        "notyf": "^3.10.0",
-        "react-bootstrap": "^2.10.10"
+        "pace-js": "^1.2.4",
+        "react-bootstrap": "^2.10.10",
+        "react-ui-scrollspy": "^2.3.0",
+        "sass": "^1.90.0",
+        "sass-embedded": "^1.90.0",
+        "tailwind-merge": "^3.3.1"
     }
 }
