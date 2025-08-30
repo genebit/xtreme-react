@@ -1,0 +1,7 @@
+.dropdown-toggle::after {
+  @apply !tw-hidden;
+}
+
+.animate__zoomIn.animate__animated {
+  --animate-duration: 200ms;
+}
