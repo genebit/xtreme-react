@@ -1,15 +1,12 @@
+import "./bootstrap";
+import "../css/app.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import "pace-js";
+
 import { createRoot } from "react-dom/client";
 import { createInertiaApp } from "@inertiajs/react";
 import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
 
-import "pace-js";
-
-import "notyf/notyf.min.js";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import "materialize-css/dist/js/materialize.min.js";
-
-import "./bootstrap";
-import "../css/app.css";
 const appName = import.meta.env.VITE_APP_NAME || "Laravel";
 
 createInertiaApp({

@@ -1,8 +1,4 @@
 @import "../scss/bs-scheme.scss";
-@import "materialize-css/dist/css/materialize.min.css";
-@import "bootstrap/dist/css/bootstrap.min.css";
-@import "notyf/notyf.min.css";
-
 @import "loader.css";
 @import "typography.css";
 @import "animate.css";
