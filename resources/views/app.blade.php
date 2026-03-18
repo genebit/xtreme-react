@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{{ asset('favicon/favicon.ico') }}" type="image/x-icon">
+
+    <title inertia>{{ config('app.name', 'Laravel') }}</title>
+
+    <link rel="stylesheet" href="{{ asset('assets/extra-libs/materialize-stripped/dist/css/materialize.min.css') }}">
+    <script defer src="{{ asset('assets/extra-libs/materialize-stripped/dist/js/materialize.min.js') }}"></script>
+
+    @routes
+    @viteReactRefresh
+    @vite(['resources/js/app.tsx', "resources/js/Pages/{$page['component']}.tsx"])
+    @inertiaHead
+</head>
+
+<body class="font-sans antialiased">
+    @inertia
+</body>
+
+</html>

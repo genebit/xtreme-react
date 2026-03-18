@@ -1,0 +1,22 @@
+.dropdown-toggle::after {
+  @apply !tw-hidden;
+}
+
+input[type="file"].form-control {
+  @apply !tw-py-[0.44rem];
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[type="checkbox"]:focus-visible,
+[type="radio"]:focus-visible,
+[role="combobox"]:focus-visible,
+a:focus-visible {
+  @apply !tw-outline-none !tw-ring-2 !tw-ring-blue-500 !tw-ring-offset-2;
+}
+
+.animate__zoomIn.animate__animated {
+  --animate-duration: 200ms;
+}
