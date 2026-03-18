@@ -1,3 +1,4 @@
+import { twMerge } from "tailwind-merge";
 import { useSidebar } from "../contexts/SidebarContext";
 
 export default function Breadcrumbs() {
@@ -5,9 +6,10 @@ export default function Breadcrumbs() {
 
   return (
     <nav
-      className={`tw-px-4 lg:tw-ps-14 tw-py-3 tw-h-14 tw-bg-white tw-border-b tw-ms-0 md:tw-ms-[65px] lg:tw-ms-[250px] ${
-        isSidebarOpen ? "lg:tw-ms-[250px]" : "lg:tw-ms-[65px]"
-      } tw-flex tw-items-center`}
+      className={twMerge(
+        "tw-px-4 lg:tw-ps-14 tw-py-3 tw-h-14 tw-bg-white tw-border-b tw-ms-0 md:tw-ms-[65px] tw-flex tw-items-center tw-transition-all tw-duration-300",
+        isSidebarOpen ? "lg:tw-ms-[250px]" : "lg:tw-ms-[65px]",
+      )}
       aria-label="breadcrumb"
       style={{
         ["--bs-breadcrumb-divider" as any]:

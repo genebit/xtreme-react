@@ -191,7 +191,7 @@ function SidebarNavHeader({
         )}
       >
         <span className="tw-flex-shrink-0 tw-text-amber-500">{icon}</span>
-        <span className="tw-truncate tw-text-sm tw-whitespace-nowrap tw-text-ellipsis tw-overflow-hidden tw-uppercase tw-font-semibold tw-text-amber-500">
+        <span className="tw-truncate tw-whitespace-nowrap tw-text-ellipsis tw-overflow-hidden tw-uppercase tw-font-semibold tw-text-amber-500 tw-text-xs">
           {children}
         </span>
       </span>
@@ -274,7 +274,7 @@ function Sidebar() {
       </header>
       <Sidebar.NavWrapper className="tw-z-20">
         <Sidebar.NavSectionWrapper>
-          <Sidebar.NavLink icon={<RiAddLine size={18} />} type="btn">
+          <Sidebar.NavLink icon={<RiAddLine size={18} />} type="btn" className="tw-bg-gradient-to-tr tw-from-blue-600 tw-to-blue-500">
             Create Tasks
           </Sidebar.NavLink>
           <Sidebar.NavHeader>Navigation</Sidebar.NavHeader>

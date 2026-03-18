@@ -2,7 +2,7 @@ import { Badge } from "react-bootstrap";
 
 export default function Footer() {
   return (
-    <footer className="tw-mt-10 tw-py-5 tw-text-center footer tw-flex md:tw-flex-row md:tw-justify-between tw-z-0">
+    <footer className="tw-mt-10 tw-py-5 tw-text-center footer tw-flex md:tw-flex-row md:tw-justify-between tw-z-0 dark:tw-text-gray-400">
       <div className="tw-flex tw-gap-3 tw-flex-row">
         <span
           className="tw-w-[50px] tw-h-[50px] tw-rounded-full tw-flex tw-items-center tw-justify-center"

@@ -11,7 +11,7 @@ interface NavbarLinkProps extends NavbarLinkBaseProps {
 }
 
 interface NavbarOptionProps extends NavbarLinkBaseProps {
-  type?: "button" | "wrapper";
+  type?: "btn" | "wrapper";
   href?: never;
   label?: never;
 }

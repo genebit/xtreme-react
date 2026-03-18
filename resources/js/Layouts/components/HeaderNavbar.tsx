@@ -7,12 +7,17 @@ import { Button, Col, Row } from "react-bootstrap";
 import {
   RiArrowDownSLine,
   RiArrowUpSLine,
+  RiCalendarCheckLine,
   RiCompass3Line,
   RiCornerDownRightLine,
+  RiFlag2Line,
+  RiInformationLine,
   RiNotification3Line,
   RiSearchLine,
+  RiShieldLine,
   RiSidebarFoldLine,
   RiSidebarUnfoldFill,
+  RiTeamLine,
 } from "@remixicon/react";
 
 import { useSidebar } from "../contexts/SidebarContext";
@@ -52,7 +57,7 @@ function HeaderNavbarLink({
         >
           {children}
         </a>
-      ) : type === "button" ? (
+      ) : type === "btn" ? (
         <Button
           {...props}
           variant="ghost"
@@ -105,7 +110,7 @@ function HeaderNavbarLinkMega({
     <div className="tw-h-full" ref={dropdownRef}>
       <HeaderNavbar.Link
         className="!tw-text-white"
-        type="button"
+        type="btn"
         alwaysPresent={alwaysPresent}
         {...props}
         onClick={toggleDropdown}
@@ -154,13 +159,14 @@ function HeaderNavbar() {
 
   return (
     <nav
-      className={`tw-px-4 tw-h-16 bg-dark-blue tw-ms-0 md:tw-ms-[65px] lg:tw-ms-[250px] ${
+      className={twMerge(
+        "tw-px-4 tw-h-16 bg-dark-blue tw-ms-0 md:tw-ms-[65px] tw-transition-all tw-duration-300 tw-border-b-[5px] tw-border-amber-500 tw-flex tw-items-center tw-relative",
         isSidebarOpen ? "lg:tw-ms-[250px]" : "lg:tw-ms-[65px]"
-      } tw-transition-all tw-border-b-[5px] tw-border-amber-500 tw-flex tw-items-center tw-relative`}
+      )}
     >
       <HeaderNavbar.Wrapper>
         <HeaderNavbar.Link
-          type="button"
+          type="btn"
           className="md:tw-hidden lg:tw-inline"
           alwaysPresent
           onClick={toggleSidebar}
@@ -266,12 +272,6 @@ function HeaderNavbar() {
         </HeaderNavbarLink.Mega>
       </HeaderNavbar.Wrapper>
       <HeaderNavbar.Wrapper className="tw-ms-auto">
-        <HeaderNavbar.Link type="link" href="#">
-          Management
-        </HeaderNavbar.Link>
-        <HeaderNavbar.Link type="link" href="#">
-          Inventory
-        </HeaderNavbar.Link>
         <HeaderNavbar.Link>
           <div className="tw-relative tw-w-56 tw-ms-auto hover:tw-w-full tw-transition-[width] tw-shadow-2xl tw-shadow-neutral-400">
             <input
@@ -320,12 +320,34 @@ function HeaderNavbar() {
                   Activity logs for this week
                 </small>
               </div>
-              <div className="tw-p-2 notifications hover:tw-overflow-y-auto tw-overscroll-contain">
-                {Array.from({ length: 10 }).map((_, i) => (
-                  <div key={i}>
-                    <span className="text-dark tw-text-xs tw-bg-slate-200 tw-animate-pulse tw-mt-1 tw-rounded tw-h-8 tw-w-full tw-block"></span>
+              <div className="notifications tw-overflow-y-auto tw-overscroll-contain tw-max-h-80">
+                {[
+                  { icon: <RiShieldLine size={14} />,       bg: "tw-bg-red-50",    text: "tw-text-red-600",   title: "Login from new device",      body: "Chrome on Windows 11 — if not you, secure your account.", time: "2m ago",   unread: true  },
+                  { icon: <RiFlag2Line size={14} />,         bg: "tw-bg-teal-50",   text: "tw-text-teal-600",  title: "Task assigned to you",       body: "Alice assigned 'CI/CD Pipeline Setup' — High priority.",  time: "15m ago",  unread: true  },
+                  { icon: <RiCalendarCheckLine size={14} />, bg: "tw-bg-amber-50",  text: "tw-text-amber-600", title: "Reminder: Q1 Planning",      body: "Meeting tomorrow at 09:00 AM in Conference Room A.",       time: "1h ago",   unread: true  },
+                  { icon: <RiTeamLine size={14} />,          bg: "tw-bg-blue-50",   text: "tw-text-blue-600",  title: "Carol Williams joined",      body: "Joined 'Xtreme Admin Panel' as a contributor.",            time: "3h ago",   unread: false },
+                  { icon: <RiFlag2Line size={14} />,         bg: "tw-bg-teal-50",   text: "tw-text-teal-600",  title: "Task completed",             body: "Bob marked 'Configure Email Notifications' as Done.",      time: "5h ago",   unread: false },
+                  { icon: <RiInformationLine size={14} />,   bg: "tw-bg-slate-100", text: "tw-text-slate-500", title: "System maintenance",         body: "Scheduled Mar 20, 02:00–04:00 AM UTC. Brief downtime.",    time: "1d ago",   unread: false },
+                ].map((n, i) => (
+                  <div key={i} className={`tw-flex tw-items-start tw-gap-3 tw-px-3 tw-py-2.5 hover:tw-bg-slate-50 tw-transition-colors tw-cursor-pointer ${n.unread ? "tw-bg-amber-50/40" : ""}`}>
+                    <div className={`tw-w-7 tw-h-7 tw-rounded-lg tw-flex tw-items-center tw-justify-center tw-flex-shrink-0 ${n.bg}`}>
+                      <span className={n.text}>{n.icon}</span>
+                    </div>
+                    <div className="tw-flex-1 tw-min-w-0">
+                      <div className="tw-flex tw-items-center tw-justify-between tw-gap-1">
+                        <p className="tw-text-xs tw-font-semibold tw-text-slate-800 tw-truncate">{n.title}</p>
+                        {n.unread && <span className="tw-w-1.5 tw-h-1.5 tw-bg-amber-500 tw-rounded-full tw-flex-shrink-0" />}
+                      </div>
+                      <p className="tw-text-xs tw-text-slate-500 tw-line-clamp-1">{n.body}</p>
+                      <p className="tw-text-xs tw-text-slate-400 tw-mt-0.5">{n.time}</p>
+                    </div>
                   </div>
                 ))}
+              </div>
+              <div className="tw-border-t tw-border-slate-100 tw-px-3 tw-py-2.5">
+                <a href={route("notifications")} className="tw-text-xs tw-font-semibold tw-text-amber-600 hover:tw-text-amber-800 tw-transition-colors">
+                  View all notifications →
+                </a>
               </div>
             </Dropdown.Menu>
           </Dropdown>
