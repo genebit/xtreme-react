@@ -6,6 +6,11 @@ input[type="file"].form-control {
   @apply !tw-py-[0.44rem];
 }
 
+.form-floating > .form-control::placeholder,
+.form-floating > .form-select::placeholder {
+  color: transparent !important;
+}
+
 button:focus-visible,
 input:focus-visible,
 select:focus-visible,
