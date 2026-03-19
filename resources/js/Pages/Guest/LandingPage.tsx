@@ -7,7 +7,6 @@ import DocsLayout from "@/Layouts/DocsLayout";
 import { ScrollSpyLink } from "@/Components/ScrollSpy";
 import {
   RiArrowRightLine,
-  RiExternalLinkLine,
   RiGithubLine,
   RiMenuLine,
   RiCloseLine,
@@ -80,7 +79,6 @@ const SECTIONS = [
   { id: "stack", label: "Tech Stack" },
   { id: "installation", label: "Installation" },
   { id: "project-structure", label: "Project Structure" },
-  { id: "live-preview", label: "Live Preview" },
   { id: "typography", label: "Typography" },
   { id: "buttons", label: "Buttons" },
   { id: "icons", label: "Icons" },
@@ -136,42 +134,6 @@ function Preview({ children }: { children: ReactNode }) {
   return <div className="tw-rounded-xl tw-border tw-border-slate-200 tw-p-6 tw-mb-4 tw-bg-white">{children}</div>;
 }
 
-function AdminPreviewCard() {
-  return (
-    <div className="tw-rounded-xl tw-overflow-hidden tw-border tw-border-slate-200 tw-shadow-md">
-      <div className="tw-flex tw-h-48">
-        <div className="tw-w-12 tw-bg-slate-900 tw-flex-shrink-0 tw-flex tw-flex-col tw-items-center tw-pt-3 tw-gap-2.5 tw-px-2">
-          <div className="tw-w-6 tw-h-6 tw-rounded tw-bg-amber-500" />
-          <div className="tw-w-6 tw-h-1.5 tw-rounded tw-bg-slate-700" />
-          <div className="tw-w-6 tw-h-1.5 tw-rounded tw-bg-slate-700" />
-          <div className="tw-w-6 tw-h-1.5 tw-rounded tw-bg-slate-700" />
-          <div className="tw-w-6 tw-h-1.5 tw-rounded tw-bg-slate-700" />
-          <div className="tw-w-6 tw-h-1.5 tw-rounded tw-bg-slate-700" />
-        </div>
-        <div className="tw-flex-1 tw-flex tw-flex-col tw-bg-slate-100">
-          <div className="tw-h-7 tw-bg-white tw-border-b tw-border-slate-200 tw-flex tw-items-center tw-px-3 tw-gap-2">
-            <div className="tw-flex-1 tw-h-2 tw-rounded tw-bg-slate-200" />
-            <div className="tw-w-12 tw-h-2 tw-rounded tw-bg-slate-200" />
-            <div className="tw-w-5 tw-h-5 tw-rounded-full tw-bg-slate-200" />
-          </div>
-          <div className="tw-p-2.5 tw-flex tw-flex-col tw-gap-2">
-            <div className="tw-h-8 tw-rounded-lg tw-bg-slate-800" />
-            <div className="tw-grid tw-grid-cols-4 tw-gap-2">
-              <div className="tw-h-14 tw-rounded-lg tw-bg-white tw-border tw-border-slate-200" />
-              <div className="tw-h-14 tw-rounded-lg tw-bg-white tw-border tw-border-slate-200" />
-              <div className="tw-h-14 tw-rounded-lg tw-bg-white tw-border tw-border-slate-200" />
-              <div className="tw-h-14 tw-rounded-lg tw-bg-white tw-border tw-border-slate-200" />
-            </div>
-            <div className="tw-grid tw-grid-cols-2 tw-gap-2">
-              <div className="tw-h-10 tw-rounded-lg tw-bg-white tw-border tw-border-slate-200" />
-              <div className="tw-h-10 tw-rounded-lg tw-bg-white tw-border tw-border-slate-200" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 const RS_OPTIONS = [
   { value: "admin", label: "Administrator" },
@@ -239,12 +201,6 @@ export default function LandingPage() {
             >
               Get Started
               <RiArrowRightLine size={15} />
-            </a>
-            <a
-              href={route("dashboard")}
-              className="tw-inline-flex tw-items-center tw-gap-1.5 tw-text-sm tw-font-semibold tw-px-4 tw-py-2 tw-rounded-lg tw-text-slate-700 tw-border tw-border-slate-200 hover:tw-bg-slate-50 tw-no-underline tw-transition-all tw-bg-white"
-            >
-              Live Demo
             </a>
             <a
               href="https://github.com/genebit/xtreme-react"
@@ -325,33 +281,16 @@ npm run dev`}</CodeBlock>
         <div id="project-structure">
           <SectionHeading id="project-structure" title="Project Structure" sub="Key directories and their purpose." />
           <CodeBlock lang="text">{`resources/js/
-├── Components/          # Shared components (PageHero, Sheet, ScrollSpy)
+├── Components/          # Reusable components (PageHero, Sheet, ScrollSpy, Preloader)
 ├── Layouts/
-│   ├── AdminLayout.tsx  # Authenticated layout wrapper
-│   ├── DocsLayout.tsx   # Documentation layout
+│   ├── AdminLayout.tsx  # Admin shell (sidebar + header)
+│   ├── DocsLayout.tsx   # Documentation layout with scroll-spy sidebar
 │   └── components/      # Sidebar, HeaderNavbar, Breadcrumbs, Footer
 └── Pages/
-    ├── Demo/            # Auth-required pages
-    └── Guest/           # Public pages
-app/Http/Controllers/    # Inertia page controllers
-routes/web.php           # All route definitions`}</CodeBlock>
-        </div>
-        <div id="live-preview">
-          <SectionHeading id="live-preview" title="Live Preview" sub="See the full admin panel in action." />
-          <P>
-            Explore the full admin panel with pre-built pages including Dashboard, Tasks, Reports, Projects, Forms,
-            Notifications, and User Profile.
-          </P>
-          <AdminPreviewCard />
-          <div className="tw-mt-4">
-            <a
-              href={route("dashboard")}
-              className="tw-inline-flex tw-items-center tw-gap-1.5 tw-text-sm tw-font-semibold tw-px-4 tw-py-2 tw-rounded-lg tw-text-white tw-bg-gradient-to-r tw-from-amber-500 tw-to-amber-600 hover:tw-from-amber-600 hover:tw-to-amber-700 tw-no-underline tw-transition-all"
-            >
-              Open Demo
-              <RiExternalLinkLine size={15} />
-            </a>
-          </div>
+    ├── Guest/           # Documentation landing page
+    └── UI/              # Component reference pages (Forms, etc.)
+app/Http/Controllers/v1/Web/  # Inertia page controllers
+routes/web.php                # All route definitions`}</CodeBlock>
         </div>
         <div id="typography">
           <SectionHeading id="typography" title="Typography" sub="Heading scales, body text, and inline styles." />
@@ -1102,7 +1041,7 @@ export default function MyPage() {
     <AdminLayout
       headTitle="My Page"
       breadcrumbs={[
-        { label: "Home", href: route("dashboard") },
+        { label: "Home", href: route("landing") },
         { label: "My Page" },
       ]}
     >
@@ -1117,11 +1056,8 @@ export default function MyPage() {
   );
 }`}</CodeBlock>
           <P>
-            Check out the Starter page at{" "}
-            <a href={route("starter")} className="tw-text-amber-600 hover:tw-underline">
-              /starter
-            </a>{" "}
-            for a minimal boilerplate page using this layout.
+            Create your own pages under <IC>resources/js/Pages/</IC> using <IC>AdminLayout</IC> as the wrapper and
+            register a route in <IC>routes/web.php</IC>.
           </P>
         </div>
         <div id="theme">

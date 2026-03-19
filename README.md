@@ -1,6 +1,20 @@
-# BS5 Xtreme Admin
+# BS5 Xtreme Admin `v1.1.0`
 
-A modern **Laravel 10 + React 18 + Inertia.js** admin panel starter template. Combines Bootstrap 5 and Tailwind CSS (with a `tw-` prefix to avoid conflicts), ships with a live component reference, and includes full demo pages for every common admin UI pattern.
+A clean **Laravel 10 + React 18 + Inertia.js** admin panel starter template. Combines Bootstrap 5 and Tailwind CSS (with a `tw-` prefix to avoid conflicts), ships with pre-built layouts, reusable components, and a live component reference.
+
+---
+
+## What's Included
+
+| Item | Description |
+|------|-------------|
+| `AdminLayout` | Full admin shell — collapsible sidebar, top header, breadcrumbs, footer |
+| `DocsLayout` | Documentation layout with fixed left nav and scroll-spy right sidebar |
+| `Sheet` | Slide-over panel component (left or right side) |
+| `ScrollSpy` | Scroll-aware section navigation |
+| `PageHero` | Consistent page heading component |
+| `Preloader` | Full-screen loading screen |
+| Component reference | Live docs at `/docs/v1/` covering typography, buttons, icons, forms, modals, and more |
 
 ---
 
@@ -29,7 +43,7 @@ A modern **Laravel 10 + React 18 + Inertia.js** admin panel starter template. Co
 
 ---
 
-## Getting Started
+## Quick Start
 
 ### 1. Clone the repository
 
@@ -38,40 +52,33 @@ git clone https://github.com/genebit/xtreme-react.git
 cd xtreme-react
 ```
 
-### 2. Install PHP dependencies
+### 2. Install dependencies
 
 ```bash
 composer install
-```
-
-### 3. Install Node dependencies
-
-```bash
 npm install
 ```
 
-### 4. Configure environment
+### 3. Configure environment
 
 ```bash
 cp .env.example .env
 php artisan key:generate
 ```
 
-> No database is required for the template pages. If your app needs one, set your `DB_*` values in `.env` and run `php artisan migrate`.
+> No database is required for the template. Add your `DB_*` values to `.env` and run `php artisan migrate` when you're ready.
 
-### 5. Start the development servers
-
-Run both commands in separate terminals:
+### 4. Start development servers
 
 ```bash
-# Terminal 1 — Laravel backend
+# Terminal 1 — Laravel
 php artisan serve
 
-# Terminal 2 — Vite frontend
+# Terminal 2 — Vite
 npm run dev
 ```
 
-Open `http://localhost:8000`. The root `/` redirects to the documentation at `/docs/v1/`.
+Visit `http://localhost:8000`. The root `/` redirects to the component reference at `/docs/v1/`.
 
 ---
 
@@ -79,50 +86,34 @@ Open `http://localhost:8000`. The root `/` redirects to the documentation at `/d
 
 ```
 xtreme-react/
-├── app/
-│   └── Http/Controllers/v1/Web/
-│       ├── DocumentationController.php    # Docs landing page
-│       ├── FormsController.php            # Form component reference
-│       ├── DashboardController.php        # Demo: Dashboard
-│       ├── TasksController.php            # Demo: Tasks
-│       ├── ReportsController.php          # Demo: Reports
-│       ├── ProjectsController.php         # Demo: Projects
-│       ├── NotificationsController.php    # Demo: Notifications
-│       ├── UserProfileController.php      # Demo: User Profile
-│       └── StarterController.php          # Demo: Blank starter page
+├── app/Http/Controllers/v1/Web/
+│   ├── DocumentationController.php    # Docs landing page
+│   └── FormsController.php            # Form component reference
 │
 ├── resources/
 │   ├── css/
-│   │   ├── app.css                        # Global styles entry
-│   │   ├── components.css                 # Bootstrap overrides and focus ring
-│   │   └── loader.css                     # Preloader animation
+│   │   ├── app.css                    # Global styles entry
+│   │   ├── components.css             # Bootstrap overrides and focus ring
+│   │   └── loader.css                 # Preloader animation
 │   │
 │   └── js/
 │       ├── Components/
-│       │   ├── PageHero.tsx               # Page heading component
-│       │   ├── Preloader.tsx              # Full-screen loading screen
-│       │   ├── ScrollSpy.tsx              # Scroll-aware section nav
-│       │   └── Sheet.tsx                  # Slide-over panel (left / right)
+│       │   ├── PageHero.tsx           # Page heading component
+│       │   ├── Preloader.tsx          # Full-screen loading screen
+│       │   ├── ScrollSpy.tsx          # Scroll-aware section nav
+│       │   └── Sheet.tsx              # Slide-over panel (left / right)
 │       │
 │       ├── Layouts/
-│       │   ├── AdminLayout.tsx            # Admin shell (sidebar + header)
-│       │   ├── DocsLayout.tsx             # Docs layout with scroll-spy sidebar
-│       │   └── GuestLayout.tsx            # Minimal guest wrapper
+│       │   ├── AdminLayout.tsx        # Admin shell (sidebar + header)
+│       │   ├── DocsLayout.tsx         # Docs layout with scroll-spy sidebar
+│       │   └── GuestLayout.tsx        # Minimal guest wrapper
 │       │
 │       └── Pages/
-│           ├── Demo/                      # Admin demo pages
-│           │   ├── Dashboard/
-│           │   ├── Tasks/
-│           │   ├── Reports/
-│           │   ├── Projects/
-│           │   ├── Notifications/
-│           │   ├── Profile/
-│           │   └── Starter/
 │           ├── Guest/
-│           │   └── LandingPage.tsx        # Component reference / docs home
+│           │   └── LandingPage.tsx    # Component reference home
 │           └── UI/
 │               └── Forms/
-│                   └── FormsPage.tsx      # Form component reference
+│                   └── FormsPage.tsx  # Form component reference
 │
 └── routes/web.php
 ```
@@ -131,20 +122,51 @@ xtreme-react/
 
 ## Routes
 
-| Path                                  | Name                  | Description               |
-|---------------------------------------|-----------------------|---------------------------|
-| `/`                                   | —                     | Redirects to docs         |
-| `/docs/v1/`                           | `landing`             | Documentation home        |
-| `/docs/v1/forms`                      | `forms`               | Form component reference  |
-| `/docs/v1/demo/u/dashboard`           | `dashboard`           | Demo: Dashboard           |
-| `/docs/v1/demo/u/tasks`               | `tasks`               | Demo: Tasks               |
-| `/docs/v1/demo/u/reports`             | `reports`             | Demo: Reports             |
-| `/docs/v1/demo/u/reports/export`      | `reports.export`      | Demo: Reports export      |
-| `/docs/v1/demo/u/projects`            | `projects`            | Demo: Projects            |
-| `/docs/v1/demo/u/projects/archived`   | `projects.archived`   | Demo: Archived projects   |
-| `/docs/v1/demo/u/profile`             | `profile`             | Demo: User profile        |
-| `/docs/v1/demo/u/notifications`       | `notifications`       | Demo: Notifications       |
-| `/docs/v1/demo/starter`               | `starter`             | Demo: Blank starter       |
+| Path          | Name      | Description              |
+|---------------|-----------|--------------------------|
+| `/`           | —         | Redirects to docs        |
+| `/docs/v1/`   | `landing` | Component reference home |
+| `/docs/v1/forms` | `forms` | Form component reference |
+
+---
+
+## Adding Your First Page
+
+1. Create a controller in `app/Http/Controllers/v1/Web/`:
+
+```php
+class MyPageController extends Controller
+{
+    public function index()
+    {
+        return Inertia::render('MyPage');
+    }
+}
+```
+
+2. Register a route in `routes/web.php`:
+
+```php
+Route::get('/my-page', [MyPageController::class, 'index'])->name('my-page');
+```
+
+3. Create the page at `resources/js/Pages/MyPage.tsx`:
+
+```tsx
+import AdminLayout from "@/Layouts/AdminLayout";
+import PageHero from "@/Components/PageHero";
+
+export default function MyPage() {
+  return (
+    <AdminLayout headTitle="My Page">
+      <PageHero title="My Page" subtitle="Description." />
+      <div className="tw-p-6">
+        {/* content */}
+      </div>
+    </AdminLayout>
+  );
+}
+```
 
 ---
 

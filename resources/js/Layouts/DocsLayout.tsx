@@ -35,10 +35,6 @@ export default function DocsLayout({
             ],
         },
         {
-            group: "Demo",
-            items: [{ label: "Live Preview", href: `${docs}#live-preview` }],
-        },
-        {
             group: "Components",
             items: [
                 { label: "Typography",      href: `${docs}#typography` },
