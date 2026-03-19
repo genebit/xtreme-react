@@ -18,6 +18,17 @@ A clean **Laravel 10 + React 18 + Inertia.js** admin panel starter template. Com
 
 ---
 
+## Screenshots
+
+| | |
+|---|---|
+| ![Documentation](public/assets/imgs/app/screenshots/screenshot-docs.png) | ![Dashboard](public/assets/imgs/app/screenshots/screenshot-dashboard.png) |
+| Documentation | Dashboard |
+| ![Form Layouts](public/assets/imgs/app/screenshots/screenshot-forms.png) | ![Tasks](public/assets/imgs/app/screenshots/screenshot-tasks.png) |
+| Form Layouts | Tasks |
+
+---
+
 ## Tech Stack
 
 | Technology   | Version | Role                              |
