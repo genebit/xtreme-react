@@ -25,12 +25,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', fn () => redirect()->route('landing'));
 
 Route::middleware('guest')->group(function () {
-    Route::prefix('docs/v1')->group(function () {
+    Route::prefix('docs/ui/v1')->group(function () {
         Route::get('/',                      [DocumentationController::class, 'index'])->name('landing');
         Route::get('/forms',                 [FormsController::class, 'index'])->name('forms');
     });
 
-    Route::prefix('docs/v1/demo')->group(function () {
+    Route::prefix('docs/ui/v1/demo')->group(function () {
         Route::get('/u/dashboard',           [DashboardController::class, 'index'])->name('dashboard');
         Route::get('/u/tasks',               [TasksController::class, 'index'])->name('tasks');
         Route::get('/u/reports',             [ReportsController::class, 'index'])->name('reports');
