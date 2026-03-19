@@ -1059,6 +1059,15 @@ export default function MyPage() {
             Create your own pages under <IC>resources/js/Pages/</IC> using <IC>AdminLayout</IC> as the wrapper and
             register a route in <IC>routes/web.php</IC>.
           </P>
+          <div className="tw-mt-4">
+            <a
+              href={route("starter")}
+              className="tw-inline-flex tw-items-center tw-gap-1.5 tw-text-sm tw-font-semibold tw-px-4 tw-py-2 tw-rounded-lg tw-text-white tw-bg-gradient-to-r tw-from-amber-500 tw-to-amber-600 hover:tw-from-amber-600 hover:tw-to-amber-700 tw-no-underline tw-transition-all"
+            >
+              View Starter Page
+              <RiArrowRightLine size={15} />
+            </a>
+          </div>
         </div>
         <div id="theme">
           <SectionHeading id="theme" title="Theme" sub="Tailwind prefix, color tokens, and Bootstrap overrides." />

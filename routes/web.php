@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\v1\Web\DocumentationController;
 use App\Http\Controllers\v1\Web\FormsController;
+use App\Http\Controllers\v1\Web\StarterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', fn () => redirect()->route('landing'));
 
 Route::prefix('docs/ui/v1')->group(function () {
-    Route::get('/',      [DocumentationController::class, 'index'])->name('landing');
-    Route::get('/forms', [FormsController::class, 'index'])->name('forms');
+    Route::get('/',         [DocumentationController::class, 'index'])->name('landing');
+    Route::get('/forms',    [FormsController::class, 'index'])->name('forms');
+    Route::get('/starter',  [StarterController::class, 'index'])->name('starter');
 });

@@ -47,6 +47,7 @@ export default function DocsLayout({
                 { label: "Sidebar / Sheet", href: `${docs}#sheet` },
                 { label: "ScrollSpy",       href: `${docs}#scroll-spy` },
                 { label: "Admin Layout",    href: `${docs}#admin-layout` },
+                { label: "Starter Page",    href: route("starter") },
             ],
         },
         {

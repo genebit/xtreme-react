@@ -2,23 +2,21 @@ import { useState } from "react";
 
 import { usePage } from "@inertiajs/react";
 import { twMerge } from "tailwind-merge";
-import { Badge, Card, Form } from "react-bootstrap";
+import { Card, Form } from "react-bootstrap";
 
 import {
-  RiAccountBoxLine,
   RiAddLine,
-  RiArchive2Line,
   RiArrowDownSLine,
   RiArrowUpSLine,
-  RiBellLine,
-  RiBriefcase2Line,
+  RiBookOpenLine,
   RiCornerDownRightLine,
   RiDashboard3Line,
-  RiFilter2Line,
-  RiLayoutLine,
+  RiFileTextLine,
+  RiGithubLine,
   RiLogoutBoxLine,
   RiMoreLine,
-  RiTrelloLine,
+  RiSettings4Line,
+  RiStackLine,
 } from "@remixicon/react";
 
 import { useSidebar } from "../contexts/SidebarContext";
@@ -201,42 +199,49 @@ function Sidebar() {
             type="btn"
             className="tw-bg-gradient-to-tr tw-from-blue-600 tw-to-blue-500"
           >
-            Create Tasks
+            New Page
           </Sidebar.NavLink>
-          <Sidebar.NavHeader>Navigation</Sidebar.NavHeader>
-          <Sidebar.NavLink icon={<RiDashboard3Line size={16} />} href={route("dashboard")}>
-            Dashboard
-          </Sidebar.NavLink>
-          <Sidebar.NavLink icon={<RiTrelloLine size={16} />} href={route("tasks")}>
-            My Tasks
+          <Sidebar.NavHeader>General</Sidebar.NavHeader>
+          <Sidebar.NavLink icon={<RiDashboard3Line size={16} />} href={route("starter")}>
+            Starter Page
           </Sidebar.NavLink>
           <Sidebar.NavLink
             type="dropdown"
-            icon={<RiFilter2Line size={16} />}
+            icon={<RiStackLine size={16} />}
             items={[
-              { label: "Overview", href: route("reports") },
-              { label: "Export", href: route("reports.export") },
+              { label: "Typography", href: route("landing") + "#typography" },
+              { label: "Buttons", href: route("landing") + "#buttons" },
+              { label: "Icons", href: route("landing") + "#icons" },
             ]}
           >
-            Reports
+            Components
+          </Sidebar.NavLink>
+          <Sidebar.NavLink
+            type="dropdown"
+            icon={<RiFileTextLine size={16} />}
+            items={[
+              { label: "Form Layouts", href: route("forms") },
+              { label: "Modals", href: route("landing") + "#modals" },
+              { label: "React Select", href: route("landing") + "#react-select" },
+              { label: "DataTables", href: route("landing") + "#datatables" },
+            ]}
+          >
+            Forms & Overlays
           </Sidebar.NavLink>
         </Sidebar.NavSectionWrapper>
         <Sidebar.NavSectionWrapper>
-          <Sidebar.NavHeader>Projects</Sidebar.NavHeader>
-          <Sidebar.NavLink icon={<RiBriefcase2Line size={16} />} href={route("projects")}>
-            Active Projects <Badge bg="primary">4</Badge>
+          <Sidebar.NavHeader>Resources</Sidebar.NavHeader>
+          <Sidebar.NavLink icon={<RiBookOpenLine size={16} />} href={route("landing")}>
+            Documentation
           </Sidebar.NavLink>
-          <Sidebar.NavLink icon={<RiArchive2Line size={16} />} href={route("projects.archived")}>
-            Archived Projects
+          <Sidebar.NavLink icon={<RiGithubLine size={16} />} href="https://github.com/genebit/xtreme-react">
+            GitHub
           </Sidebar.NavLink>
         </Sidebar.NavSectionWrapper>
         <Sidebar.NavSectionWrapper>
           <Sidebar.NavHeader>Account</Sidebar.NavHeader>
-          <Sidebar.NavLink icon={<RiAccountBoxLine size={16} />} href={route("profile")}>
-            Profile
-          </Sidebar.NavLink>
-          <Sidebar.NavLink icon={<RiBellLine size={16} />} href={route("notifications")}>
-            Notifications <Badge bg="danger">9+</Badge>
+          <Sidebar.NavLink icon={<RiSettings4Line size={16} />} href={route("landing") + "#admin-layout"}>
+            Settings
           </Sidebar.NavLink>
           <Sidebar.NavLink type="btn" className="text-danger" icon={<RiLogoutBoxLine size={16} />}>
             Logout
