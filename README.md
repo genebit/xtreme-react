@@ -31,37 +31,49 @@ A modern **Laravel 10 + React 18 + Inertia.js** admin panel starter template. Co
 
 ## Getting Started
 
-### 1. Clone the repository
+### Option A — Download the release (recommended for new projects)
+
+1. Go to the [Releases](https://github.com/genebit/xtreme-react/releases) page and download the latest `Source code (.zip)` for `release/v1.1.0`.
+2. Extract the archive and rename the folder to your project name.
+3. Follow the **Install & Run** steps below.
+
+### Option B — Clone the repository
+
+Clone the `development` branch for the full source including demo pages:
 
 ```bash
 git clone https://github.com/genebit/xtreme-react.git
 cd xtreme-react
 ```
 
-### 2. Install PHP dependencies
+Or clone the clean release branch directly:
+
+```bash
+git clone -b release/v1.1.0 https://github.com/genebit/xtreme-react.git my-app
+cd my-app
+```
+
+---
+
+## Install & Run
+
+### 1. Install dependencies
 
 ```bash
 composer install
-```
-
-### 3. Install Node dependencies
-
-```bash
 npm install
 ```
 
-### 4. Configure environment
+### 2. Configure environment
 
 ```bash
 cp .env.example .env
 php artisan key:generate
 ```
 
-> No database is required for the template pages. If your app needs one, set your `DB_*` values in `.env` and run `php artisan migrate`.
+> No database is required for the template pages. Add your `DB_*` values to `.env` and run `php artisan migrate` when your app needs one.
 
-### 5. Start the development servers
-
-Run both commands in separate terminals:
+### 3. Start the development servers
 
 ```bash
 # Terminal 1 — Laravel backend
@@ -71,7 +83,7 @@ php artisan serve
 npm run dev
 ```
 
-Open `http://localhost:8000`. The root `/` redirects to the documentation at `/docs/v1/`.
+Open `http://localhost:8000`. The root `/` redirects to the component reference at `/docs/ui/v1/`.
 
 ---
 
@@ -131,20 +143,20 @@ xtreme-react/
 
 ## Routes
 
-| Path                                  | Name                  | Description               |
-|---------------------------------------|-----------------------|---------------------------|
-| `/`                                   | —                     | Redirects to docs         |
-| `/docs/v1/`                           | `landing`             | Documentation home        |
-| `/docs/v1/forms`                      | `forms`               | Form component reference  |
-| `/docs/v1/demo/u/dashboard`           | `dashboard`           | Demo: Dashboard           |
-| `/docs/v1/demo/u/tasks`               | `tasks`               | Demo: Tasks               |
-| `/docs/v1/demo/u/reports`             | `reports`             | Demo: Reports             |
-| `/docs/v1/demo/u/reports/export`      | `reports.export`      | Demo: Reports export      |
-| `/docs/v1/demo/u/projects`            | `projects`            | Demo: Projects            |
-| `/docs/v1/demo/u/projects/archived`   | `projects.archived`   | Demo: Archived projects   |
-| `/docs/v1/demo/u/profile`             | `profile`             | Demo: User profile        |
-| `/docs/v1/demo/u/notifications`       | `notifications`       | Demo: Notifications       |
-| `/docs/v1/demo/starter`               | `starter`             | Demo: Blank starter       |
+| Path                                     | Name                  | Description               |
+|------------------------------------------|-----------------------|---------------------------|
+| `/`                                      | —                     | Redirects to docs         |
+| `/docs/ui/v1/`                           | `landing`             | Documentation home        |
+| `/docs/ui/v1/forms`                      | `forms`               | Form component reference  |
+| `/docs/ui/v1/demo/u/dashboard`           | `dashboard`           | Demo: Dashboard           |
+| `/docs/ui/v1/demo/u/tasks`               | `tasks`               | Demo: Tasks               |
+| `/docs/ui/v1/demo/u/reports`             | `reports`             | Demo: Reports             |
+| `/docs/ui/v1/demo/u/reports/export`      | `reports.export`      | Demo: Reports export      |
+| `/docs/ui/v1/demo/u/projects`            | `projects`            | Demo: Projects            |
+| `/docs/ui/v1/demo/u/projects/archived`   | `projects.archived`   | Demo: Archived projects   |
+| `/docs/ui/v1/demo/u/profile`             | `profile`             | Demo: User profile        |
+| `/docs/ui/v1/demo/u/notifications`       | `notifications`       | Demo: Notifications       |
+| `/docs/ui/v1/demo/starter`               | `starter`             | Demo: Blank starter       |
 
 ---
 
