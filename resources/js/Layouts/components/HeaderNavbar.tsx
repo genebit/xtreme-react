@@ -241,7 +241,7 @@ function HeaderNavbar() {
                 <span className="tw-text-xs tw-text-slate-500"><span className="tw-font-bold tw-text-teal-600">6</span> archived</span>
               </div>
               <a
-                href={route("tasks")}
+                href={route("starter")}
                 className="tw-flex tw-items-center tw-gap-1 tw-text-xs tw-font-semibold tw-text-amber-600 hover:tw-text-amber-800 tw-no-underline tw-transition-colors"
               >
                 View all tasks <RiArrowRightLine size={12} />
@@ -373,7 +373,7 @@ function HeaderNavbar() {
               </div>
               <div className="tw-border-t tw-border-slate-100 tw-px-3 tw-py-2.5">
                 <a
-                  href={route("notifications")}
+                  href={route("landing")}
                   className="tw-text-xs tw-font-semibold tw-text-amber-600 hover:tw-text-amber-800 tw-transition-colors"
                 >
                   View all notifications →
@@ -434,7 +434,7 @@ function HeaderNavbar() {
                 <p className="tw-text-sm tw-font-bold tw-text-slate-900 tw-mb-0">John Doe</p>
                 <p className="tw-text-xs tw-text-amber-600 tw-font-medium tw-mb-0">Administrator</p>
               </div>
-              <a href={route("notifications")} className="tw-ms-auto tw-relative">
+              <a href={route("landing")} className="tw-ms-auto tw-relative">
                 <RiNotification3Line size={18} className="tw-text-slate-500" />
                 <span className="tw-absolute -tw-top-0.5 -tw-right-0.5 tw-w-2 tw-h-2 tw-bg-teal-500 tw-rounded-full" />
               </a>
@@ -442,15 +442,15 @@ function HeaderNavbar() {
             <p className="tw-text-[10px] tw-uppercase tw-tracking-widest tw-text-slate-400 tw-font-semibold tw-mb-2">Quick Navigation</p>
             <div className="tw-grid tw-grid-cols-3 tw-gap-2">
               {[
-                { label: "Dashboard",  icon: <RiLayoutGridLine size={18} />,    href: route("dashboard"),     bg: "tw-bg-amber-50",  text: "tw-text-amber-600" },
-                { label: "Tasks",      icon: <RiFileListLine size={18} />,      href: route("tasks"),         bg: "tw-bg-blue-50",   text: "tw-text-blue-600" },
-                { label: "Projects",   icon: <RiFolder3Line size={18} />,       href: route("projects"),      bg: "tw-bg-violet-50", text: "tw-text-violet-600" },
-                { label: "Reports",    icon: <RiBarChart2Line size={18} />,     href: route("reports"),       bg: "tw-bg-teal-50",   text: "tw-text-teal-600" },
-                { label: "Starter",    icon: <RiCompass3Line size={18} />,      href: route("starter"),       bg: "tw-bg-rose-50",   text: "tw-text-rose-500" },
-                { label: "Forms",      icon: <RiFileListLine size={18} />,      href: route("forms"),         bg: "tw-bg-indigo-50", text: "tw-text-indigo-600" },
-                { label: "Alerts",     icon: <RiNotification3Line size={18} />, href: route("notifications"), bg: "tw-bg-amber-50",  text: "tw-text-amber-600" },
-                { label: "Profile",    icon: <RiUser3Line size={18} />,         href: route("profile"),       bg: "tw-bg-slate-100", text: "tw-text-slate-600" },
-                { label: "Team",       icon: <RiTeamLine size={18} />,          href: route("dashboard"),     bg: "tw-bg-blue-50",   text: "tw-text-blue-600" },
+                { label: "Docs",         icon: <RiLayoutGridLine size={18} />,    href: route("landing"),                       bg: "tw-bg-amber-50",   text: "tw-text-amber-600" },
+                { label: "Starter",      icon: <RiCompass3Line size={18} />,      href: route("starter"),                       bg: "tw-bg-blue-50",    text: "tw-text-blue-600" },
+                { label: "Form Layouts", icon: <RiFileListLine size={18} />,      href: route("forms"),                         bg: "tw-bg-violet-50",  text: "tw-text-violet-600" },
+                { label: "Typography",   icon: <RiBarChart2Line size={18} />,     href: route("landing") + "#typography",       bg: "tw-bg-teal-50",    text: "tw-text-teal-600" },
+                { label: "Buttons",      icon: <RiFolder3Line size={18} />,       href: route("landing") + "#buttons",          bg: "tw-bg-rose-50",    text: "tw-text-rose-500" },
+                { label: "Icons",        icon: <RiNotification3Line size={18} />, href: route("landing") + "#icons",            bg: "tw-bg-indigo-50",  text: "tw-text-indigo-600" },
+                { label: "Modals",       icon: <RiUser3Line size={18} />,         href: route("landing") + "#modals",           bg: "tw-bg-amber-50",   text: "tw-text-amber-600" },
+                { label: "Admin Layout", icon: <RiTeamLine size={18} />,          href: route("landing") + "#admin-layout",     bg: "tw-bg-slate-100",  text: "tw-text-slate-600" },
+                { label: "Theme",        icon: <RiBarChart2Line size={18} />,     href: route("landing") + "#theme",            bg: "tw-bg-blue-50",    text: "tw-text-blue-600" },
               ].map((item) => (
                 <a
                   key={item.label}

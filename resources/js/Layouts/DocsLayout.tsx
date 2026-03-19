@@ -88,10 +88,10 @@ export default function DocsLayout({
                             Docs
                         </a>
                         <a
-                            href={route("dashboard")}
+                            href={route("starter")}
                             className="tw-text-sm tw-px-3 tw-py-1.5 tw-rounded-lg tw-text-slate-600 hover:tw-text-slate-900 hover:tw-bg-slate-100 tw-no-underline tw-transition-colors"
                         >
-                            Demo
+                            Starter
                         </a>
                     </nav>
                     <div className="tw-flex-1" />
@@ -105,10 +105,10 @@ export default function DocsLayout({
                             <RiGithubLine size={18} />
                         </a>
                         <a
-                            href={route("dashboard")}
+                            href={route("starter")}
                             className="tw-hidden sm:tw-flex tw-items-center tw-gap-1.5 tw-text-sm tw-font-semibold tw-px-3 tw-py-1.5 tw-rounded-lg tw-text-white tw-bg-gradient-to-r tw-from-amber-500 tw-to-amber-600 hover:tw-from-amber-600 hover:tw-to-amber-700 tw-no-underline tw-transition-all"
                         >
-                            Live Demo
+                            Get Started
                             <RiArrowRightLine size={14} />
                         </a>
                         <button
