@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => redirect()->route('landing'));
 
-Route::prefix('docs/v1')->group(function () {
+Route::prefix('docs/ui/v1')->group(function () {
     Route::get('/',      [DocumentationController::class, 'index'])->name('landing');
     Route::get('/forms', [FormsController::class, 'index'])->name('forms');
 });

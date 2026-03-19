@@ -14,7 +14,7 @@ A clean **Laravel 10 + React 18 + Inertia.js** admin panel starter template. Com
 | `ScrollSpy` | Scroll-aware section navigation |
 | `PageHero` | Consistent page heading component |
 | `Preloader` | Full-screen loading screen |
-| Component reference | Live docs at `/docs/v1/` covering typography, buttons, icons, forms, modals, and more |
+| Component reference | Live docs at `/docs/ui/v1/` covering typography, buttons, icons, forms, modals, and more |
 
 ---
 
@@ -43,32 +43,43 @@ A clean **Laravel 10 + React 18 + Inertia.js** admin panel starter template. Com
 
 ---
 
-## Quick Start
+## Getting Started
 
-### 1. Clone the repository
+### Option A — Download the release (recommended)
+
+1. Go to the [Releases](https://github.com/genebit/xtreme-react/releases) page.
+2. Under `release/v1.1.0`, click **Source code (zip)** to download.
+3. Extract the archive and rename the folder to your project name.
+4. Follow the **Install & Run** steps below.
+
+### Option B — Clone the release branch
 
 ```bash
-git clone https://github.com/genebit/xtreme-react.git
-cd xtreme-react
+git clone -b release/v1.1.0 https://github.com/genebit/xtreme-react.git my-app
+cd my-app
 ```
 
-### 2. Install dependencies
+---
+
+## Install & Run
+
+### 1. Install dependencies
 
 ```bash
 composer install
 npm install
 ```
 
-### 3. Configure environment
+### 2. Configure environment
 
 ```bash
 cp .env.example .env
 php artisan key:generate
 ```
 
-> No database is required for the template. Add your `DB_*` values to `.env` and run `php artisan migrate` when you're ready.
+> No database is required for the template. Add your `DB_*` values to `.env` and run `php artisan migrate` when your app needs one.
 
-### 4. Start development servers
+### 3. Start development servers
 
 ```bash
 # Terminal 1 — Laravel
@@ -78,7 +89,7 @@ php artisan serve
 npm run dev
 ```
 
-Visit `http://localhost:8000`. The root `/` redirects to the component reference at `/docs/v1/`.
+Visit `http://localhost:8000`. The root `/` redirects to the component reference at `/docs/ui/v1/`.
 
 ---
 
@@ -122,11 +133,11 @@ xtreme-react/
 
 ## Routes
 
-| Path          | Name      | Description              |
-|---------------|-----------|--------------------------|
-| `/`           | —         | Redirects to docs        |
-| `/docs/v1/`   | `landing` | Component reference home |
-| `/docs/v1/forms` | `forms` | Form component reference |
+| Path              | Name      | Description              |
+|-------------------|-----------|--------------------------|
+| `/`               | —         | Redirects to docs        |
+| `/docs/ui/v1/`    | `landing` | Component reference home |
+| `/docs/ui/v1/forms` | `forms` | Form component reference |
 
 ---
 
